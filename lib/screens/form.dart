@@ -13,7 +13,7 @@ class _FormTxState extends State<FormTx> {
     return Scaffold(
       body: Column(
         children: [
-          SizedBox(height: 80),
+          const SizedBox(height: 80),
           TextFormField(),
         ],
       ),

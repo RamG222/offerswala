@@ -13,7 +13,7 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     var mQSize = MediaQuery.of(context).size;
     var mQHeight = mQSize.height;
-    var mQWidth = mQSize.width;
+    // var mQWidth = mQSize.width;
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(

@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:getwidget/components/button/gf_button.dart';
-import 'package:getwidget/types/gf_button_type.dart';
 import 'package:offerswala/screens/login.dart';
 import 'package:offerswala/screens/pre_login_2.dart';
 import 'package:page_view_dot_indicator/page_view_dot_indicator.dart';
@@ -81,10 +78,10 @@ class PreLogin1 extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          padding: EdgeInsets.symmetric(horizontal: 30),
+                          padding: const EdgeInsets.symmetric(horizontal: 30),
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xffE6E6E6),
+                              backgroundColor: const Color(0xffE6E6E6),
                             ),
                             onPressed: () {
                               Navigator.of(context).pushReplacement(
@@ -95,7 +92,7 @@ class PreLogin1 extends StatelessWidget {
                             child: Padding(
                               padding: EdgeInsets.symmetric(
                                   horizontal: mQWidth / 15),
-                              child: Text(
+                              child: const Text(
                                 'Skip',
                                 style: TextStyle(
                                     color: Colors.black,
@@ -105,10 +102,10 @@ class PreLogin1 extends StatelessWidget {
                           ),
                         ),
                         Container(
-                            padding: EdgeInsets.symmetric(horizontal: 30),
+                            padding: const EdgeInsets.symmetric(horizontal: 30),
                             child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Color(0xffFFE059),
+                                  backgroundColor: const Color(0xffFFE059),
                                 ),
                                 onPressed: () {
                                   Navigator.of(context).pushReplacement(
@@ -119,7 +116,7 @@ class PreLogin1 extends StatelessWidget {
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(
                                       horizontal: mQWidth / 15),
-                                  child: Text(
+                                  child: const Text(
                                     'Next >',
                                     style: TextStyle(
                                         color: Colors.black,

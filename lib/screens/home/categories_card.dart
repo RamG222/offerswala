@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 
 class Categories_Card extends StatelessWidget {
@@ -11,31 +13,31 @@ class Categories_Card extends StatelessWidget {
     var mQHeight = mQSize.height;
     var mQWidth = mQSize.width;
     return Card(
-      margin: EdgeInsets.symmetric(horizontal: 12),
+      margin: const EdgeInsets.symmetric(horizontal: 12),
       elevation: 5,
       child: Column(
         children: [
           SizedBox(
             height: mQHeight / 100,
           ),
-          Text('Top Categories'),
+          const Text('Top Categories'),
           SizedBox(
             height: mQHeight / 100,
           ),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Icon(
                       Icons.local_grocery_store,
                       size: 30,
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Text("Groceries"),
                   )
                 ],
@@ -43,14 +45,14 @@ class Categories_Card extends StatelessWidget {
               Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Icon(
                       Icons.local_grocery_store,
                       size: 30,
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Text("Groceries"),
                   )
                 ],
@@ -58,14 +60,14 @@ class Categories_Card extends StatelessWidget {
               Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Icon(
                       Icons.local_grocery_store,
                       size: 30,
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Text("Groceries"),
                   )
                 ],
@@ -73,34 +75,34 @@ class Categories_Card extends StatelessWidget {
               Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Icon(
                       Icons.local_grocery_store,
                       size: 30,
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Text("Groceries"),
                   )
                 ],
               ),
             ],
           ),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Icon(
                       Icons.local_grocery_store,
                       size: 30,
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Text("Groceries"),
                   )
                 ],
@@ -108,14 +110,14 @@ class Categories_Card extends StatelessWidget {
               Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Icon(
                       Icons.local_grocery_store,
                       size: 30,
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Text("Groceries"),
                   )
                 ],
@@ -123,14 +125,14 @@ class Categories_Card extends StatelessWidget {
               Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Icon(
                       Icons.local_grocery_store,
                       size: 30,
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Text("Groceries"),
                   )
                 ],
@@ -138,14 +140,14 @@ class Categories_Card extends StatelessWidget {
               Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Icon(
                       Icons.local_grocery_store,
                       size: 30,
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Text("Groceries"),
                   )
                 ],
@@ -160,7 +162,7 @@ class Categories_Card extends StatelessWidget {
                 mQHeight / 200,
               ),
               child: TextButton(
-                child: Text('View All >'),
+                child: const Text('View All >'),
                 onPressed: () {},
               )),
         ],

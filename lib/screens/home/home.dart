@@ -37,11 +37,14 @@ class _HomeState extends State<Home> {
                       width: mQWidth / 2,
                     ),
                     SizedBox(height: mQHeight / 18),
-                    ElevatedButton(onPressed: () {}, child: Text('My Profile')),
+                    ElevatedButton(
+                        onPressed: () {}, child: const Text('My Profile')),
                     SizedBox(height: mQHeight / 130),
-                    ElevatedButton(onPressed: () {}, child: Text('Offers')),
+                    ElevatedButton(
+                        onPressed: () {}, child: const Text('Offers')),
                     SizedBox(height: mQHeight / 5),
-                    ElevatedButton(onPressed: () {}, child: Text('Log out')),
+                    ElevatedButton(
+                        onPressed: () {}, child: const Text('Log out')),
                   ],
                 ),
               ),
@@ -57,9 +60,9 @@ class _HomeState extends State<Home> {
                         SizedBox(
                           width: mQWidth / 20,
                         ),
-                        Text('Current Location:'),
+                        const Text('Current Location:'),
                         SizedBox(width: mQWidth / 25),
-                        Text('Mumbai'),
+                        const Text('Mumbai'),
                       ],
                     ),
                   ),
@@ -75,15 +78,15 @@ class _HomeState extends State<Home> {
                         hintText: 'Search',
                       ),
                     ),
-                    Image_slider(),
-                    Categories_Card(),
+                    const Image_slider(),
+                    const Categories_Card(),
                     SizedBox(height: mQHeight / 100),
-                    Top_Brands_card()
+                    const Top_Brands_card()
                   ],
                 ),
               ),
             )
-          : Scaffold(),
+          : const Scaffold(),
     );
   }
 }

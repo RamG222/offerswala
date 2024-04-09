@@ -40,10 +40,7 @@ class _FirstLocationAccessState extends State<FirstLocationAccess> {
                   setState(() {
                     selectCity = setSelectCity;
                   });
-                  print(selectCity);
-                } catch (e) {
-                  print(e);
-                }
+                } catch (e) {}
               },
               child: const Text("Select Location"),
             ),
