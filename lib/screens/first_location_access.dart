@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:geocode/geocode.dart';
 
 class FirstLocationAccess extends StatefulWidget {
   const FirstLocationAccess({super.key});
@@ -11,7 +10,7 @@ class FirstLocationAccess extends StatefulWidget {
 }
 
 class _FirstLocationAccessState extends State<FirstLocationAccess> {
-  String? selectCity; //here
+  String? selectCity;
 
   @override
   Widget build(BuildContext context) {
@@ -28,20 +27,7 @@ class _FirstLocationAccessState extends State<FirstLocationAccess> {
             ),
             SizedBox(height: mQHeight / 25),
             ElevatedButton(
-              onPressed: () async {
-                var location = await _determinePosition();
-                var lat = location.latitude;
-                var long = location.longitude;
-                try {
-                  List<Placemark> placemark =
-                      await placemarkFromCoordinates(lat, long);
-                  String? setSelectCity = await placemark[0].locality;
-
-                  setState(() {
-                    selectCity = setSelectCity;
-                  });
-                } catch (e) {}
-              },
+              onPressed: selectLocation,
               child: const Text("Select Location"),
             ),
             SizedBox(height: mQHeight / 25),
@@ -53,6 +39,20 @@ class _FirstLocationAccessState extends State<FirstLocationAccess> {
       ),
     );
   }
+
+  void selectLocation() async {
+    var location = await _determinePosition();
+    var lat = location.latitude;
+    var long = location.longitude;
+    try {
+      List<Placemark> placemark = await placemarkFromCoordinates(lat, long);
+      String? setSelectCity = await placemark[0].locality;
+
+      setState(() {
+        selectCity = setSelectCity;
+      });
+    } catch (e) {}
+  }
 }
 
 Future<Position> _determinePosition() async {
@@ -61,6 +61,7 @@ Future<Position> _determinePosition() async {
 
   // Test if location services are enabled.
   serviceEnabled = await Geolocator.isLocationServiceEnabled();
+
   if (!serviceEnabled) {
     // Location services are not enabled don't continue
     // accessing the position and request users of the
@@ -69,6 +70,7 @@ Future<Position> _determinePosition() async {
   }
 
   permission = await Geolocator.checkPermission();
+
   if (permission == LocationPermission.denied) {
     permission = await Geolocator.requestPermission();
     if (permission == LocationPermission.denied) {
@@ -86,7 +88,6 @@ Future<Position> _determinePosition() async {
     return Future.error(
         'Location permissions are permanently denied, we cannot request permissions.');
   }
-
   // When we reach here, permissions are granted and we can
   // continue accessing the position of the device.
   return await Geolocator.getCurrentPosition();

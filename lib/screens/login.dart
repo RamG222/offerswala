@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:offerswala/screens/signup.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -9,12 +10,17 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final loginFormKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     var mQSize = MediaQuery.of(context).size;
     var mQHeight = mQSize.height;
     var mQWidth = mQSize.width;
-    var loginFormKey;
+
+    var phoneNumController = TextEditingController();
+    var passwordController = TextEditingController();
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -54,6 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ],
                       ),
                       child: TextFormField(
+                        controller: phoneNumController,
                         keyboardType: TextInputType.phone,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(left: mQHeight / 28),
@@ -83,6 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Container(
                       child: TextFormField(
                         obscureText: true,
+                        controller: passwordController,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(left: mQHeight / 28),
                           hintText: "Password",
@@ -185,7 +193,7 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 TextButton(
                     onPressed: () {
-                      launchUrl(Uri.parse('https://RamApp.dev/'));
+                      launchUrl(Uri.parse('https://Forgetpassword.com'));
                     },
                     child: const Text(
                       'Forgot Password ?',
@@ -193,7 +201,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           color: Colors.black, fontWeight: FontWeight.bold),
                     )),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const SignUp()));
+                  },
                   child: const Text(
                     'Sign up',
                     style: TextStyle(fontWeight: FontWeight.bold),
