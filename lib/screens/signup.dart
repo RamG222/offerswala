@@ -13,101 +13,321 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     var mQSize = MediaQuery.of(context).size;
     var mQHeight = mQSize.height;
-    // var mQWidth = mQSize.width;
+    var mQWidth = mQSize.width;
     return SafeArea(
       child: Scaffold(
-        body: SingleChildScrollView(
-          child: Center(
-            child: Column(
-              children: [
-                SizedBox(
-                  height: mQHeight / 70,
+        body: Column(
+          children: [
+            Container(
+              child: Center(
+                  child: Text(
+                'Temporary Disp (replace this) ',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30,
                 ),
-                const Text("Sign up", style: TextStyle(fontSize: 30)),
-                SizedBox(
-                  height: mQHeight / 70,
-                ),
-                Form(
-                    child: Card(
-                  margin: const EdgeInsets.symmetric(horizontal: 30),
-                  elevation: 10,
-                  child: Column(
+              )),
+              width: mQWidth,
+              height: mQHeight / 3,
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 255, 80, 11),
+                borderRadius:
+                    BorderRadius.only(bottomLeft: Radius.circular(50)),
+              ),
+            ),
+            SizedBox(height: mQHeight / 100),
+            Center(
+              child: Column(
+                children: [
+                  Text(
+                    "Sign up to Unlock",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextFormField(
-                          scrollPadding: EdgeInsets.only(
-                              bottom: MediaQuery.of(context).viewInsets.bottom),
-                          decoration:
-                              const InputDecoration(labelText: "First Name"),
-                        ),
+                      Text(
+                        "BEST ",
+                        style: TextStyle(
+                            fontFamily: "Beast",
+                            fontWeight: FontWeight.w100,
+                            fontSize: 50,
+                            color: Colors.red),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextFormField(
-                          scrollPadding: EdgeInsets.only(
-                              bottom: MediaQuery.of(context).viewInsets.bottom),
-                          decoration:
-                              const InputDecoration(labelText: "Last Name"),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextFormField(
-                          scrollPadding: EdgeInsets.only(
-                              bottom: MediaQuery.of(context).viewInsets.bottom),
-                          decoration: const InputDecoration(labelText: "Email"),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextFormField(
-                          scrollPadding: EdgeInsets.only(
-                              bottom: MediaQuery.of(context).viewInsets.bottom),
-                          decoration:
-                              const InputDecoration(labelText: "Mobile Number"),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextFormField(
-                          scrollPadding: EdgeInsets.only(
-                              bottom: MediaQuery.of(context).viewInsets.bottom),
-                          obscureText: true,
-                          decoration:
-                              const InputDecoration(labelText: "Password"),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextFormField(
-                          scrollPadding: EdgeInsets.only(
-                              bottom: MediaQuery.of(context).viewInsets.bottom),
-                          decoration: const InputDecoration(
-                              labelText: "Repeat Password"),
-                        ),
-                      ),
-                      SizedBox(
-                        height: mQHeight / 70,
-                      ),
-                      ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const FirstLocationAccess()));
-                          },
-                          child: const Text('Sign Up')),
-                      SizedBox(
-                        height: mQHeight / 70,
+                      Text(
+                        " Offers.",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 40),
                       ),
                     ],
                   ),
-                ))
+                ],
+              ),
+            ),
+            SizedBox(height: mQHeight / 100),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: mQHeight / 5.5,
+                  height: mQHeight / 24,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(30),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 3,
+                          offset: const Offset(0, 3),
+                        )
+                      ]),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(30),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 3,
+                          offset: const Offset(0, 3),
+                        ),
+                      ],
+                    ),
+                    child: TextFormField(
+                      keyboardType: TextInputType.name,
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.only(left: mQHeight / 28),
+                        hintText: "First Name",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: mQWidth / 50,
+                ),
+                Container(
+                  width: mQHeight / 5.5,
+                  height: mQHeight / 24,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(30),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 3,
+                          offset: const Offset(0, 3),
+                        )
+                      ]),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(30),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 3,
+                          offset: const Offset(0, 3),
+                        ),
+                      ],
+                    ),
+                    child: TextFormField(
+                      keyboardType: TextInputType.name,
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.only(left: mQHeight / 28),
+                        hintText: "Last Name",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
-          ),
+            SizedBox(height: mQHeight / 100),
+            Container(
+              height: mQHeight / 24,
+              margin: const EdgeInsets.symmetric(horizontal: 45),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 3,
+                      offset: const Offset(0, 3),
+                    )
+                  ]),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 3,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: TextFormField(
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.only(left: mQHeight / 28),
+                    hintText: "Email",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: mQHeight / 100),
+            Container(
+              height: mQHeight / 24,
+              margin: const EdgeInsets.symmetric(horizontal: 45),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 3,
+                      offset: const Offset(0, 3),
+                    )
+                  ]),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 3,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: TextFormField(
+                  keyboardType: TextInputType.phone,
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.only(left: mQHeight / 28),
+                    hintText: "Phone",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: mQHeight / 100),
+            Container(
+              height: mQHeight / 24,
+              margin: const EdgeInsets.symmetric(horizontal: 45),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 3,
+                      offset: const Offset(0, 3),
+                    )
+                  ]),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 3,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: TextFormField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.only(left: mQHeight / 28),
+                    hintText: "Password",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: mQHeight / 100),
+            Container(
+              height: mQHeight / 24,
+              margin: const EdgeInsets.symmetric(horizontal: 45),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 3,
+                      offset: const Offset(0, 3),
+                    )
+                  ]),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 3,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: TextFormField(
+                  keyboardType: TextInputType.phone,
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.only(left: mQHeight / 28),
+                    hintText: "Re-Enter Password",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: mQHeight / 30),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xffBA172F),
+              ),
+              onPressed: () {},
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: mQWidth / 7),
+                child: const Text(
+                  'Login',
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

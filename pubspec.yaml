@@ -25,7 +25,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints:
 
 flutter:
   uses-material-design: true
@@ -41,3 +40,7 @@ flutter:
           weight: 500
         - asset: assets/fonts/Gilroy-Bold.ttf
           weight: 700
+    - family: Beast
+      fonts:
+        - asset: assets/fonts/RubikBeastly-Regular.ttf
+          style: normal
