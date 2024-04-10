@@ -193,7 +193,7 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 TextButton(
                     onPressed: () {
-                      launchUrl(Uri.parse('https://Forgetpassword.com'));
+                      launchUrl(Uri.parse('https://RamApp.dev/'));
                     },
                     child: const Text(
                       'Forgot Password ?',

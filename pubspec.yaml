@@ -29,10 +29,10 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/signup/
     - assets/images/
+    - assets/images/signup/
     - assets/images/icons/
-
+    - assets/images/icons/categories/
   fonts:
     - family: Gilroy
       fonts:

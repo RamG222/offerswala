@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:offerswala/screens/first_location_access.dart';
-import 'package:offerswala/screens/signup.dart';
+import 'package:offerswala/screens/home/home.dart';
 import 'package:offerswala/screens/splash_screen.dart';
 
 void main() {
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Gilroy',
         useMaterial3: true,
       ),
-      home: const SplashScreen(),
+      home: const Home(),
     );
   }
 }

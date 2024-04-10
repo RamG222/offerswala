@@ -13,6 +13,7 @@ class Top_Brands_card extends StatelessWidget {
     var mQHeight = mQSize.height;
     var mQWidth = mQSize.width;
     return Card(
+      color: Color.fromARGB(255, 255, 246, 166),
       margin: const EdgeInsets.symmetric(horizontal: 12),
       elevation: 5,
       child: Column(

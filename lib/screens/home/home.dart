@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:offerswala/screens/home/categories_card.dart';
+import 'package:offerswala/screens/home/change_location.dart';
 import 'package:offerswala/screens/home/image_slider.dart';
 import 'package:offerswala/screens/home/top_brands_card.dart';
 
@@ -28,7 +29,7 @@ class _HomeState extends State<Home> {
       child: isWideScreen()
           ? Scaffold(
               drawer: Drawer(
-                backgroundColor: const Color.fromARGB(255, 226, 215, 217),
+                backgroundColor: Color.fromARGB(255, 191, 140, 149),
                 child: Column(
                   children: [
                     SizedBox(height: mQHeight / 20),
@@ -51,20 +52,25 @@ class _HomeState extends State<Home> {
               appBar: AppBar(
                 iconTheme: const IconThemeData(color: Color(0xffBA172F)),
                 title: TextButton(
-                  onPressed: () {},
-                  child: Expanded(
-                    child: Row(
-                      children: [
-                        Image.asset('assets/images/logo.png',
-                            width: mQWidth / 10),
-                        SizedBox(
-                          width: mQWidth / 20,
-                        ),
-                        const Text('Current Location:'),
-                        SizedBox(width: mQWidth / 25),
-                        const Text('Mumbai'),
-                      ],
-                    ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ChangeLocationScreen(),
+                      ),
+                    );
+                  },
+                  child: Row(
+                    children: [
+                      Image.asset('assets/images/logo.png',
+                          width: mQWidth / 10),
+                      SizedBox(
+                        width: mQWidth / 20,
+                      ),
+                      const Text('Current Location:'),
+                      SizedBox(width: mQWidth / 25),
+                      const Text('Mumbai'),
+                    ],
                   ),
                 ),
               ),

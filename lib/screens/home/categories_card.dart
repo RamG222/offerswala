@@ -13,6 +13,7 @@ class Categories_Card extends StatelessWidget {
     var mQHeight = mQSize.height;
     var mQWidth = mQSize.width;
     return Card(
+      color: Color.fromARGB(255, 255, 246, 166),
       margin: const EdgeInsets.symmetric(horizontal: 12),
       elevation: 5,
       child: Column(
@@ -24,86 +25,101 @@ class Categories_Card extends StatelessWidget {
           SizedBox(
             height: mQHeight / 100,
           ),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Icon(
-                      Icons.local_grocery_store,
-                      size: 30,
+          Container(
+            padding: EdgeInsets.only(left: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Image.asset(
+                        'assets/images/icons/categories/fashion.png',
+                        width: mQWidth / 10,
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text("Groceries"),
-                  )
-                ],
-              ),
-              Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Icon(
-                      Icons.local_grocery_store,
-                      size: 30,
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text("Fashion"),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text("Groceries"),
-                  )
-                ],
-              ),
-              Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Icon(
-                      Icons.local_grocery_store,
-                      size: 30,
+                  ],
+                ),
+                Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Image.asset(
+                        'assets/images/icons/categories/mobile.png',
+                        width: mQWidth / 10,
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text("Groceries"),
-                  )
-                ],
-              ),
-              Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Icon(
-                      Icons.local_grocery_store,
-                      size: 30,
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text("Mobiles"),
+                    )
+                  ],
+                ),
+                Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Image.asset(
+                        'assets/images/icons/categories/banking.png',
+                        width: mQWidth / 10,
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text("Groceries"),
-                  )
-                ],
-              ),
-            ],
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text("Banking"),
+                    )
+                  ],
+                ),
+                Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Image.asset(
+                        'assets/images/icons/categories/electronics.png',
+                        width: mQWidth / 10,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text("Electronics"),
+                    )
+                  ],
+                ),
+              ],
+            ),
           ),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Column(
                 children: [
                   Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Icon(
-                      Icons.local_grocery_store,
-                      size: 30,
+                    child: Image.asset(
+                      'assets/images/icons/categories/cosmetics.png',
+                      width: mQWidth / 10,
+                    ),
+                  ),
+                  Text("Cosmetics")
+                ],
+              ),
+              Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Image.asset(
+                      'assets/images/icons/categories/hotel.png',
+                      width: mQWidth / 10,
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Text("Groceries"),
+                    child: Text("Hotels"),
                   )
                 ],
               ),
@@ -111,14 +127,14 @@ class Categories_Card extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Icon(
-                      Icons.local_grocery_store,
-                      size: 30,
+                    child: Image.asset(
+                      'assets/images/icons/categories/health.png',
+                      width: mQWidth / 10,
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Text("Groceries"),
+                    child: Text("Health"),
                   )
                 ],
               ),
@@ -126,29 +142,14 @@ class Categories_Card extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Icon(
-                      Icons.local_grocery_store,
-                      size: 30,
+                    child: Image.asset(
+                      'assets/images/icons/categories/flight.png',
+                      width: mQWidth / 10,
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Text("Groceries"),
-                  )
-                ],
-              ),
-              Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Icon(
-                      Icons.local_grocery_store,
-                      size: 30,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text("Groceries"),
+                    child: Text("Flight"),
                   )
                 ],
               ),
