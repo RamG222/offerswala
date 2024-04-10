@@ -4,9 +4,11 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 final List<String> imgList = [
-  "assets/images/Vocal_for_Local.png",
-  "assets/images/Offers _Discounts.png",
-  "assets/images/Grab_Save.png"
+  "assets/images/image_slider/1.jpg",
+  "assets/images/image_slider/2.jpg",
+  "assets/images/image_slider/3.jpg",
+  "assets/images/image_slider/4.jpg",
+  "assets/images/image_slider/5.jpg",
 ];
 
 class Image_slider extends StatelessWidget {
@@ -18,11 +20,11 @@ class Image_slider extends StatelessWidget {
   Widget build(BuildContext context) {
     return CarouselSlider(
       items: imgList
-          .map((e) => Center(
+          .map((src) => Center(
                 child: Padding(
-                  padding: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(5.0),
                   child: Image.asset(
-                    e,
+                    src,
                     fit: BoxFit.cover,
                   ),
                 ),

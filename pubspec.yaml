@@ -25,6 +25,12 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: "^0.13.1"
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/logo.png"
+  min_sdk_android: 21
 
 flutter:
   uses-material-design: true
@@ -33,6 +39,7 @@ flutter:
     - assets/images/signup/
     - assets/images/icons/
     - assets/images/icons/categories/
+    - assets/images/image_slider/
   fonts:
     - family: Gilroy
       fonts:
