@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:offerswala/screens/login.dart';
 import 'package:offerswala/screens/pre_login_2.dart';
+import 'package:offerswala/widescreen.dart';
 import 'package:page_view_dot_indicator/page_view_dot_indicator.dart';
 
 class PreLogin1 extends StatelessWidget {
@@ -8,17 +9,10 @@ class PreLogin1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // making responsive app
     var mQSize = MediaQuery.of(context).size;
     var mQHeight = mQSize.height;
     var mQWidth = mQSize.width;
-
-    bool isWideScreen() {
-      if (MediaQuery.of(context).size.width > 800) {
-        return true;
-      } else {
-        return false;
-      }
-    }
 
     return GestureDetector(
       onHorizontalDragEnd: (DragEndDetails details) {
@@ -28,7 +22,7 @@ class PreLogin1 extends StatelessWidget {
         }
       },
       child: Scaffold(
-        body: isWideScreen()
+        body: isWideScreen(context)
             ? const Center(
                 child: Text('Tablet or Web'),
               )
@@ -37,7 +31,7 @@ class PreLogin1 extends StatelessWidget {
                   children: [
                     SizedBox(height: mQHeight / 6),
                     Image.asset(
-                      "assets/images/Vocal_for_Local.png",
+                      "assets/images/pre_login/01.gif",
                       width: mQWidth / 1.5,
                     ),
                     SizedBox(

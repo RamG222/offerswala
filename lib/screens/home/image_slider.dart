@@ -18,11 +18,14 @@ class Image_slider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var mQSize = MediaQuery.of(context).size;
+    var mQHeight = mQSize.height;
+    var mQWidth = mQSize.width;
     return CarouselSlider(
       items: imgList
-          .map((src) => Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(5.0),
+          .map((src) => TextButton(
+                onPressed: () {},
+                child: Center(
                   child: Image.asset(
                     src,
                     fit: BoxFit.cover,
@@ -30,7 +33,10 @@ class Image_slider extends StatelessWidget {
                 ),
               ))
           .toList(),
-      options: CarouselOptions(),
+      options: CarouselOptions(
+        height: mQHeight / 6,
+        autoPlay: true,
+      ),
     );
   }
 }

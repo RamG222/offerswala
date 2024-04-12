@@ -40,6 +40,8 @@ flutter:
     - assets/images/icons/
     - assets/images/icons/categories/
     - assets/images/image_slider/
+    - assets/images/pre_login/
+
   fonts:
     - family: Gilroy
       fonts:

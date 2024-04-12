@@ -6,6 +6,7 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //showing splash screen for 3 seconds and then routing to next page
     void delayAndRoute() async {
       await Future.delayed(const Duration(milliseconds: 3000));
       Navigator.pushReplacement(
@@ -18,12 +19,10 @@ class SplashScreen extends StatelessWidget {
 
     delayAndRoute();
 
-    //Loads Slides faster
-    precacheImage(
-        const AssetImage("assets/images/Vocal_for_Local.png"), context);
-    precacheImage(
-        const AssetImage("assets/images/Offers _Discounts.png"), context);
-    precacheImage(const AssetImage("assets/images/Grab_Save.png"), context);
+    //for making slides images load faster by cache
+    precacheImage(const AssetImage("assets/images/pre_login/01.gif"), context);
+    precacheImage(const AssetImage("assets/images/pre_login/02.gif"), context);
+    precacheImage(const AssetImage("assets/images/pre_login/03.gif"), context);
 
     return Scaffold(
       body: Container(
