@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:offerswala/screens/home/home.dart';
-import 'package:offerswala/screens/splash_screen.dart';
+  import 'package:offerswala/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());

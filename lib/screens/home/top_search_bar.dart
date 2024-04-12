@@ -18,7 +18,7 @@ class top_search_bar extends StatelessWidget {
       children: [
         Container(
           width: mQWidth,
-          height: mQHeight / 20,
+          height: mQHeight / 18,
           decoration: BoxDecoration(
             color: const Color(0xffBA172F),
           ),
@@ -26,7 +26,8 @@ class top_search_bar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: mQWidth / 1.5,
+                width: mQWidth / 1.25,
+                height: mQHeight / 31,
                 child: SearchBar(
                   shape: MaterialStatePropertyAll(
                     BeveledRectangleBorder(
@@ -38,33 +39,11 @@ class top_search_bar extends StatelessWidget {
                   hintText: 'Search Offerswala.in',
                 ),
               ),
-              Container(
-                margin: EdgeInsets.symmetric(vertical: mQHeight / 81),
-                decoration: BoxDecoration(
-                    color: Colors.yellow,
-                    borderRadius: BorderRadius.circular(3)),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: mQWidth / 50),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.search_sharp,
-                        size: 20,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: mQHeight / 250,
-                        ),
-                        child: Text('Search'),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
             ],
           ),
         ),
         Container(
+          height: mQHeight / 20,
           decoration: BoxDecoration(
             color: Color.fromARGB(255, 217, 211, 211),
           ),
@@ -79,7 +58,8 @@ class top_search_bar extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: EdgeInsets.symmetric(
-                          horizontal: mQWidth / 100, vertical: mQHeight / 850),
+                        horizontal: mQWidth / 100,
+                      ),
                       child: Container(
                         decoration: BoxDecoration(
                             border: Border.all(),

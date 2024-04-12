@@ -78,18 +78,15 @@ class _HomeState extends State<Home> {
                   title: Transform.translate(
                     offset: Offset(-20.0, 0.0),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(
                           'assets/images/logo.png',
                           width: mQWidth / 10,
                         ),
-                        SizedBox(
-                          width: mQWidth / 20,
-                        ),
+                        SizedBox(width: mQWidth / 18),
                         Container(
-                          width: mQWidth / 2.4,
-                          height: 25,
+                          width: mQWidth / 1.6,
+                          height: mQHeight / 30,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
                             border: Border.all(color: Colors.black),
@@ -100,27 +97,19 @@ class _HomeState extends State<Home> {
                                 child: Container(
                                   padding: EdgeInsets.all(3),
                                   height: 25,
-                                  width: mQWidth / 5,
+                                  width: mQWidth / 18,
                                   decoration: BoxDecoration(
                                     color: Colors.yellow,
                                     borderRadius: BorderRadius.circular(30),
                                   ),
-                                  child: Row(
-                                    children: [
-                                      Icon(
-                                        Icons.location_on_outlined,
-                                        size: 18,
-                                      ),
-                                      Text(
-                                        "Location",
-                                        style: TextStyle(fontSize: 15),
-                                      ),
-                                    ],
+                                  child: Icon(
+                                    Icons.location_on_outlined,
+                                    size: 18,
                                   ),
                                 ),
                               ),
                               Container(
-                                width: mQWidth / 5,
+                                width: mQWidth / 1.8,
                                 padding: EdgeInsets.all(3),
                                 child: Center(
                                   child: Text(
@@ -135,34 +124,6 @@ class _HomeState extends State<Home> {
                             ],
                           ),
                         ),
-                        SizedBox(
-                          width: mQWidth / 30,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Admin',
-                              style: TextStyle(
-                                fontSize: 15,
-                              ),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            SizedBox(
-                              width: mQWidth / 60,
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.circular(mQHeight / 2),
-                                  border: Border.all()),
-                              child: Icon(
-                                Icons.account_circle,
-                                color: const Color(0xffBA172F),
-                              ),
-                            )
-                          ],
-                        )
                       ],
                     ),
                   ),

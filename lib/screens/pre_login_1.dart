@@ -31,7 +31,7 @@ class PreLogin1 extends StatelessWidget {
                   children: [
                     SizedBox(height: mQHeight / 6),
                     Image.asset(
-                      "assets/images/pre_login/01.gif",
+                      "assets/images/Vocal_for_Local.png",
                       width: mQWidth / 1.5,
                     ),
                     SizedBox(
