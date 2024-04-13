@@ -40,8 +40,8 @@ class PreLogin2 extends StatelessWidget {
                   children: [
                     SizedBox(height: mQHeight / 7),
                     Image.asset(
-                      "assets/images/Offers _Discounts.png",
-                      width: mQWidth / 1.5,
+                      "assets/images/02.gif",
+                      width: mQWidth,
                     ),
                     SizedBox(
                       height: mQHeight / 30,

@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types
+// ignore_for_file: camel_case_types, unused_local_variable
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -23,12 +23,50 @@ class Image_slider extends StatelessWidget {
     var mQHeight = mQSize.height;
     var mQWidth = mQSize.width;
     return ImageSlideshow(
+      width: mQWidth,
+      autoPlayInterval: 3000,
+      isLoop: true,
       children: [
-        InkWell(onTap: () {}, child: Image.asset(imgList[0])),
-        InkWell(onTap: () {}, child: Image.asset(imgList[1])),
-        InkWell(onTap: () {}, child: Image.asset(imgList[2])),
-        InkWell(onTap: () {}, child: Image.asset(imgList[3])),
-        InkWell(onTap: () {}, child: Image.asset(imgList[4])),
+        InkWell(
+            onTap: () {},
+            child: Image.asset(
+              imgList[0],
+              fit: BoxFit.fill,
+              height: double.infinity,
+              width: double.infinity,
+            )),
+        InkWell(
+            onTap: () {},
+            child: Image.asset(
+              imgList[1],
+              fit: BoxFit.fill,
+              height: double.infinity,
+              width: double.infinity,
+            )),
+        InkWell(
+            onTap: () {},
+            child: Image.asset(
+              imgList[2],
+              fit: BoxFit.fill,
+              height: double.infinity,
+              width: double.infinity,
+            )),
+        InkWell(
+            onTap: () {},
+            child: Image.asset(
+              imgList[3],
+              fit: BoxFit.fill,
+              height: double.infinity,
+              width: double.infinity,
+            )),
+        InkWell(
+            onTap: () {},
+            child: Image.asset(
+              imgList[4],
+              fit: BoxFit.fill,
+              height: double.infinity,
+              width: double.infinity,
+            )),
       ],
     );
   }

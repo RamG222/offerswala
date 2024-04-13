@@ -1,12 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
-import 'package:offerswala/screens/home/categories_card.dart';
+import 'package:offerswala/screens/home/categories_widget.dart';
 import 'package:offerswala/screens/home/change_location.dart';
+import 'package:offerswala/screens/home/top_deals_bar.dart';
 import 'package:offerswala/widescreen.dart';
 import 'package:offerswala/screens/home/image_slider.dart';
-import 'package:offerswala/screens/home/top_brands_card.dart';
 import 'package:offerswala/screens/home/top_search_bar.dart';
 
 class Home extends StatefulWidget {
@@ -84,44 +82,52 @@ class _HomeState extends State<Home> {
                           width: mQWidth / 10,
                         ),
                         SizedBox(width: mQWidth / 18),
-                        Container(
-                          width: mQWidth / 1.6,
-                          height: mQHeight / 30,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: Colors.black),
+                        InkWell(
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ChangeLocationScreen(),
+                            ),
                           ),
-                          child: Row(
-                            children: [
-                              Center(
-                                child: Container(
-                                  padding: EdgeInsets.all(3),
-                                  height: 25,
-                                  width: mQWidth / 18,
-                                  decoration: BoxDecoration(
-                                    color: Colors.yellow,
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
-                                  child: Icon(
-                                    Icons.location_on_outlined,
-                                    size: 18,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                width: mQWidth / 1.8,
-                                padding: EdgeInsets.all(3),
-                                child: Center(
-                                  child: Text(
-                                    'Mumbai',
-                                    style: TextStyle(
-                                      fontSize: 15,
+                          child: Container(
+                            width: mQWidth / 1.6,
+                            height: mQHeight / 30,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              border: Border.all(color: Colors.black),
+                            ),
+                            child: Row(
+                              children: [
+                                Center(
+                                  child: Container(
+                                    padding: EdgeInsets.all(3),
+                                    height: 25,
+                                    width: mQWidth / 18,
+                                    decoration: BoxDecoration(
+                                      color: Colors.yellow,
+                                      borderRadius: BorderRadius.circular(30),
                                     ),
-                                    overflow: TextOverflow.ellipsis,
+                                    child: Icon(
+                                      Icons.location_on_outlined,
+                                      size: 18,
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                                Container(
+                                  width: mQWidth / 1.8,
+                                  padding: EdgeInsets.all(3),
+                                  child: Center(
+                                    child: Text(
+                                      'Mumbai',
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                      ),
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ],
@@ -132,8 +138,9 @@ class _HomeState extends State<Home> {
                   child: Column(
                     children: [
                       const top_search_bar(),
+                      topDealsBar(),
                       const Image_slider(),
-                      // const Categories_Card(),
+                      const categories_widget(),
                       // SizedBox(height: mQHeight / 100),
                       // const Top_Brands_card()
                     ],
