@@ -29,7 +29,7 @@ class PreLogin1 extends StatelessWidget {
             : Center(
                 child: Column(
                   children: [
-                    SizedBox(height: mQHeight / 6),
+                    SizedBox(height: mQHeight / 8),
                     Image.asset(
                       "assets/images/01.gif",
                       width: mQWidth,

@@ -17,7 +17,6 @@ dependencies:
   geolocator: ^11.0.0
   geocoding: ^3.0.0
   geocode: ^1.0.3
-  carousel_slider: ^4.2.1
   simple_form_validations: ^1.0.1
   flutter_image_slideshow: ^0.1.6
 
@@ -29,7 +28,7 @@ dev_dependencies:
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/images/logo.png"
+  image_path: "assets/images/icon.png"
   min_sdk_android: 21
 
 flutter:
