@@ -1,8 +1,6 @@
 name: offerswala
-description: "A new Flutter project."
-# The following line prevents the package from being accidentally published to
-# pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: "none" # Remove this line if you wish to publish to pub.dev
+description: "OffersWala App Made by Ram Gupta"
+publish_to: "none"
 
 version: 1.0.0+1
 
@@ -26,6 +24,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
   flutter_launcher_icons: "^0.13.1"
 flutter_launcher_icons:
   android: "launcher_icon"
@@ -41,7 +40,6 @@ flutter:
     - assets/images/icons/
     - assets/images/icons/categories/
     - assets/images/image_slider/
-    - assets/images/pre_login/
 
   fonts:
     - family: Gilroy

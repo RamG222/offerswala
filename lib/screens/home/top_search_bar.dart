@@ -27,10 +27,9 @@ class top_search_bar extends StatelessWidget {
                 height: mQHeight / 23,
                 child: SearchBar(
                   shape: MaterialStatePropertyAll(
-                    BeveledRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(3),
-                            bottomLeft: Radius.circular(3))),
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
                   constraints: BoxConstraints(maxHeight: mQHeight / 20),
                   hintText: 'Search Offerswala.in',

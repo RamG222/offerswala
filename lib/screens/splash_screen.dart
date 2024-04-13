@@ -20,10 +20,9 @@ class SplashScreen extends StatelessWidget {
     delayAndRoute();
 
     //for making slides images load faster by cache
-    precacheImage(const AssetImage("assets/images/pre_login/01.gif"), context);
-    precacheImage(const AssetImage("assets/images/pre_login/02.gif"), context);
-    precacheImage(const AssetImage("assets/images/pre_login/03.gif"), context);
-
+    precacheImage(const AssetImage("assets/images/01.gif"), context);
+    precacheImage(const AssetImage("assets/images/02.gif"), context);
+    precacheImage(const AssetImage("assets/images/03.gif"), context);
     return Scaffold(
       body: Container(
         color: const Color(0xffFFF8EA),

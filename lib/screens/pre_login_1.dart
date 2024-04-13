@@ -55,9 +55,7 @@ class PreLogin1 extends StatelessWidget {
                         maxLines: 3,
                       ),
                     ),
-                    SizedBox(
-                      height: mQHeight / 10,
-                    ),
+                    SizedBox(height: mQHeight / 10),
                     PageViewDotIndicator(
                       currentItem: 0,
                       count: 3,
