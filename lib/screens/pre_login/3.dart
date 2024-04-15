@@ -31,7 +31,7 @@ class PreLogin3 extends StatelessWidget {
           Navigator.pushReplacement(
               context,
               PageTransition(
-                  type: PageTransitionType.rightToLeft, child: PreLogin2()));
+                  type: PageTransitionType.leftToRight, child: PreLogin2()));
         }
       },
       child: Scaffold(
