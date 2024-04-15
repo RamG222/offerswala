@@ -9,7 +9,7 @@ class topDealsBar extends StatelessWidget {
     '10-30 %',
     'Flash Deals',
     '50% off',
-    'New Deals'
+    'New Deals',
   ];
   @override
   Widget build(BuildContext context) {

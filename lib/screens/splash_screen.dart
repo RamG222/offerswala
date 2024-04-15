@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:offerswala/screens/pre_login_1.dart';
+import 'package:offerswala/screens/pre_login/1.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -19,10 +19,7 @@ class SplashScreen extends StatelessWidget {
 
     delayAndRoute();
 
-    //for making slides images load faster by cache
-    precacheImage(const AssetImage("assets/images/01.gif"), context);
-    precacheImage(const AssetImage("assets/images/02.gif"), context);
-    precacheImage(const AssetImage("assets/images/03.gif"), context);
+   
     return Scaffold(
       body: Container(
         color: const Color(0xffFFF8EA),

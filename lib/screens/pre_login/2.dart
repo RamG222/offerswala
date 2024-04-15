@@ -1,44 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:offerswala/screens/login.dart';
-import 'package:offerswala/screens/pre_login_2.dart';
-import 'package:offerswala/widescreen.dart';
+import 'package:offerswala/screens/pre_login/1.dart';
+import 'package:offerswala/screens/pre_login/3.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:page_view_dot_indicator/page_view_dot_indicator.dart';
 
-class PreLogin1 extends StatelessWidget {
-  const PreLogin1({super.key});
+class PreLogin2 extends StatelessWidget {
+  const PreLogin2({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // making responsive app
     var mQSize = MediaQuery.of(context).size;
     var mQHeight = mQSize.height;
     var mQWidth = mQSize.width;
+    bool isWideScreen() {
+      if (MediaQuery.of(context).size.width > 800) {
+        return true;
+      } else {
+        return false;
+      }
+    }
 
     return GestureDetector(
       onHorizontalDragEnd: (DragEndDetails details) {
         if (details.primaryVelocity! < 0) {
-          Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => const PreLogin2()));
+          Navigator.pushReplacement(
+              context,
+              PageTransition(
+                  type: PageTransitionType.rightToLeft, child: PreLogin3()));
+        } else {
+          Navigator.pushReplacement(
+              context,
+              PageTransition(
+                  type: PageTransitionType.rightToLeft, child: PreLogin1()));
         }
       },
       child: Scaffold(
-        body: isWideScreen(context)
+        body: isWideScreen()
             ? const Center(
                 child: Text('Tablet or Web'),
               )
             : Center(
                 child: Column(
                   children: [
-                    SizedBox(height: mQHeight / 8),
+                    SizedBox(height: mQHeight / 7),
                     Image.asset(
-                      "assets/images/01.gif",
+                      "assets/images/02.gif",
                       width: mQWidth,
                     ),
                     SizedBox(
                       height: mQHeight / 30,
                     ),
                     Text(
-                      'Vocal for Local',
+                      'Offers & Discounts',
                       style: TextStyle(
                           fontFamily: 'Gilroy',
                           fontSize: mQHeight / 25,
@@ -50,14 +64,16 @@ class PreLogin1 extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: mQWidth / 9),
                       child: const Text(
-                        'is an initiative encouraging consumers to prioritize locally-made products to boost indigenous industries and the economy.',
+                        'Get exclusive discounts and special offers on a wide range of Local products and services',
                         textAlign: TextAlign.center,
                         maxLines: 3,
                       ),
                     ),
-                    SizedBox(height: mQHeight / 10),
+                    SizedBox(
+                      height: mQHeight / 10,
+                    ),
                     PageViewDotIndicator(
-                      currentItem: 0,
+                      currentItem: 1,
                       count: 3,
                       alignment: Alignment.center,
                       unselectedColor: Colors.black26,
@@ -100,10 +116,11 @@ class PreLogin1 extends StatelessWidget {
                                   backgroundColor: const Color(0xffFFE059),
                                 ),
                                 onPressed: () {
-                                  Navigator.of(context).pushReplacement(
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const PreLogin2()));
+                                  Navigator.pushReplacement(
+                                      context,
+                                      PageTransition(
+                                          type: PageTransitionType.rightToLeft,
+                                          child: PreLogin3()));
                                 },
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(

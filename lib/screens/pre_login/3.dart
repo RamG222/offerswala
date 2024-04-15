@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:offerswala/screens/login.dart';
-import 'package:offerswala/screens/pre_login_1.dart';
-import 'package:offerswala/screens/pre_login_3.dart';
+import 'package:offerswala/screens/pre_login/2.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:page_view_dot_indicator/page_view_dot_indicator.dart';
 
-class PreLogin2 extends StatelessWidget {
-  const PreLogin2({super.key});
+class PreLogin3 extends StatelessWidget {
+  const PreLogin3({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,11 +23,15 @@ class PreLogin2 extends StatelessWidget {
     return GestureDetector(
       onHorizontalDragEnd: (DragEndDetails details) {
         if (details.primaryVelocity! < 0) {
-          Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => const PreLogin3()));
+          Navigator.pushReplacement(
+              context,
+              PageTransition(
+                  type: PageTransitionType.rightToLeft, child: LoginScreen()));
         } else {
-          Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => const PreLogin1()));
+          Navigator.pushReplacement(
+              context,
+              PageTransition(
+                  type: PageTransitionType.rightToLeft, child: PreLogin2()));
         }
       },
       child: Scaffold(
@@ -40,14 +44,14 @@ class PreLogin2 extends StatelessWidget {
                   children: [
                     SizedBox(height: mQHeight / 7),
                     Image.asset(
-                      "assets/images/02.gif",
+                      "assets/images/03.gif",
                       width: mQWidth,
                     ),
                     SizedBox(
                       height: mQHeight / 30,
                     ),
                     Text(
-                      'Offers & Discounts',
+                      'Grab & Save',
                       style: TextStyle(
                           fontFamily: 'Gilroy',
                           fontSize: mQHeight / 25,
@@ -59,7 +63,7 @@ class PreLogin2 extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: mQWidth / 9),
                       child: const Text(
-                        'Get exclusive discounts and special offers on a wide range of Local products and services',
+                        'Quickly capture and save detailed information about offers which you are interested in',
                         textAlign: TextAlign.center,
                         maxLines: 3,
                       ),
@@ -68,7 +72,7 @@ class PreLogin2 extends StatelessWidget {
                       height: mQHeight / 10,
                     ),
                     PageViewDotIndicator(
-                      currentItem: 1,
+                      currentItem: 2,
                       count: 3,
                       alignment: Alignment.center,
                       unselectedColor: Colors.black26,
@@ -111,10 +115,11 @@ class PreLogin2 extends StatelessWidget {
                                   backgroundColor: const Color(0xffFFE059),
                                 ),
                                 onPressed: () {
-                                  Navigator.of(context).pushReplacement(
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const PreLogin3()));
+                                  Navigator.pushReplacement(
+                                      context,
+                                      PageTransition(
+                                          type: PageTransitionType.rightToLeft,
+                                          child: LoginScreen()));
                                 },
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(
