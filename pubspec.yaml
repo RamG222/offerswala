@@ -20,6 +20,7 @@ dependencies:
   simple_form_validations: ^1.0.1
   flutter_image_slideshow: ^0.1.6
   page_transition: ^2.1.0
+  searchfield: ^1.0.1
 
 dev_dependencies:
   flutter_test:

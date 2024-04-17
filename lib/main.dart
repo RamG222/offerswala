@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:offerswala/screens/home/home.dart';
-import 'package:offerswala/screens/splash_screen.dart';
+import 'package:offerswala/screens/Home/homepage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,7 +27,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         primaryColor: const Color(0xffBA172F),
       ),
-      home: const Home(),
+      home: Home(),
     );
   }
 }
