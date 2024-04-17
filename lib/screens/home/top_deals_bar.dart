@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class topDealsBar extends StatelessWidget {
+class TopDealsBar extends StatelessWidget {
   var dataFromAPI = [
     '10-30 %',
     'Flash Deals',

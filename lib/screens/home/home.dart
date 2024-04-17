@@ -138,7 +138,7 @@ class _HomeState extends State<Home> {
                   child: Column(
                     children: [
                       const top_search_bar(),
-                      topDealsBar(),
+                      TopDealsBar(),
                       const Image_slider(),
                       const categories_widget(),
                       // SizedBox(height: mQHeight / 100),
