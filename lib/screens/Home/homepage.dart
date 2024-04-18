@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
-import 'package:offerswala/screens/Home/image_slider.dart';
 import 'package:searchfield/searchfield.dart';
 
-const containerBackgroundColor = Color.fromARGB(255, 231, 59, 59);
+const containerBackgroundColor = Color.fromARGB(255, 242, 166, 24);
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -18,14 +16,24 @@ class _HomeState extends State<Home> {
     var mQSize = MediaQuery.of(context).size;
     var mQHeight = mQSize.height;
     var mQWidth = mQSize.width;
+
     var suggestion = ['a', 'b', 'c', 'd'];
+
     return Scaffold(
       body: Column(
         children: [
           Container(
-            height: mQHeight / 5.5,
+            height: mQHeight / 2,
             width: mQWidth,
-            decoration: BoxDecoration(color: containerBackgroundColor),
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                opacity: 0.6,
+                image: AssetImage(
+                  'assets/images/111.jpg',
+                ),
+              ),
+            ),
             child: Column(
               children: [
                 SizedBox(
@@ -108,11 +116,8 @@ class _HomeState extends State<Home> {
               ],
             ),
           ),
-          imageSlider(mQHeight: mQHeight, mQWidth: mQWidth),
         ],
       ),
     );
   }
 }
-
-

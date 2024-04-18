@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:offerswala/screens/Home/homepage.dart';
+import 'package:offerswala/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +14,6 @@ class MyApp extends StatelessWidget {
     void loadImage() async {
       //for making slides images load faster by cache
       await precacheImage(AssetImage("assets/images/logo.png"), context);
-      
     }
 
     loadImage();
