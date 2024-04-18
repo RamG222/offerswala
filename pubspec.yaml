@@ -11,7 +11,6 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.6
-  shimmer: ^3.0.0
   page_view_dot_indicator: ^2.3.0
   url_launcher: ^6.2.5
   geolocator: ^11.0.0
@@ -19,8 +18,8 @@ dependencies:
   geocode: ^1.0.3
   simple_form_validations: ^1.0.1
   flutter_image_slideshow: ^0.1.6
-  page_transition: ^2.1.0
   searchfield: ^1.0.1
+  page_transition: ^2.1.0
 
 dev_dependencies:
   flutter_test:

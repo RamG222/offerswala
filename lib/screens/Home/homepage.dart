@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
+import 'package:offerswala/screens/Home/image_slider.dart';
 import 'package:searchfield/searchfield.dart';
+
+const containerBackgroundColor = Color.fromARGB(255, 231, 59, 59);
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -18,13 +22,10 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body: Column(
         children: [
-          //
           Container(
             height: mQHeight / 5.5,
             width: mQWidth,
-            decoration: BoxDecoration(
-              color: Color.fromARGB(255, 231, 59, 59),
-            ),
+            decoration: BoxDecoration(color: containerBackgroundColor),
             child: Column(
               children: [
                 SizedBox(
@@ -72,7 +73,6 @@ class _HomeState extends State<Home> {
                   margin: EdgeInsets.symmetric(horizontal: mQWidth / 20),
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      border: Border.all(),
                       borderRadius: BorderRadius.circular(10)),
                   child: SearchField(
                     onSearchTextChanged: (query) {
@@ -90,11 +90,11 @@ class _HomeState extends State<Home> {
                               )))
                           .toList();
                     },
-                    hint: '🔍Search',
+                    hint: 'Search',
                     itemHeight: 50,
                     searchInputDecoration: InputDecoration(
-                      fillColor: Colors.white,
-                      contentPadding: EdgeInsets.only(left: 20),
+                      border: InputBorder.none,
+                      prefixIcon: Icon(Icons.search),
                       hintStyle: TextStyle(),
                     ),
                     suggestionsDecoration: SuggestionDecoration(
@@ -108,8 +108,11 @@ class _HomeState extends State<Home> {
               ],
             ),
           ),
+          imageSlider(mQHeight: mQHeight, mQWidth: mQWidth),
         ],
       ),
     );
   }
 }
+
+

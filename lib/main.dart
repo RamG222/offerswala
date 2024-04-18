@@ -10,15 +10,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void loadImages() async {
+    void loadImage() async {
       //for making slides images load faster by cache
       await precacheImage(AssetImage("assets/images/logo.png"), context);
-      await precacheImage(AssetImage("assets/images/01.gif"), context);
-      await precacheImage(AssetImage("assets/images/02.gif"), context);
-      await precacheImage(AssetImage("assets/images/03.gif"), context);
+      
     }
 
-    loadImages();
+    loadImage();
 
     return MaterialApp(
       theme: ThemeData(

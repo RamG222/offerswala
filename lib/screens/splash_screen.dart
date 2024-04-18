@@ -9,8 +9,11 @@ class SplashScreen extends StatelessWidget {
     //showing splash screen for 3 seconds and then routing to next page
     void delayAndRoute() async {
       await Future.delayed(const Duration(milliseconds: 3000));
+      await precacheImage(AssetImage("assets/images/01.gif"), context);
+      await precacheImage(AssetImage("assets/images/02.gif"), context);
+      await precacheImage(AssetImage("assets/images/03.gif"), context);
+
       Navigator.pushReplacement(
-          // ignore: use_build_context_synchronously
           context,
           MaterialPageRoute(
             builder: (context) => const PreLogin1(),
@@ -19,7 +22,6 @@ class SplashScreen extends StatelessWidget {
 
     delayAndRoute();
 
-   
     return Scaffold(
       body: Container(
         color: const Color(0xffFFF8EA),
