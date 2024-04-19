@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
+import 'package:get/get.dart';
+import 'package:offerswala/screens/Home/image_slider.dart';
 import 'package:searchfield/searchfield.dart';
 
 const containerBackgroundColor = Color.fromARGB(255, 242, 166, 24);
@@ -113,6 +116,10 @@ class _HomeState extends State<Home> {
                     suggestions: [],
                   ),
                 ),
+                SizedBox(
+                  height: mQHeight / 12,
+                ),
+                ImageSlider(mQWidth: mQWidth, mQHeight: mQHeight),
               ],
             ),
           ),

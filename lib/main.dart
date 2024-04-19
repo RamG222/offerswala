@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:offerswala/screens/Home/homepage.dart';
 import 'package:offerswala/screens/splash_screen.dart';
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
 
     loadImage();
 
-    return MaterialApp(
+    return GetMaterialApp(
       theme: ThemeData(
         //setting deafult font
         fontFamily: 'Gilroy',
