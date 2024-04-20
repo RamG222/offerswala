@@ -1,6 +1,12 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:offerswala/screens/Home/b1g1.dart';
+import 'package:offerswala/screens/Home/bottom_image_grid.dart';
+import 'package:offerswala/screens/Home/brands_scrolling_widget.dart';
 import 'package:offerswala/screens/Home/categories_scrolling_widget.dart';
 import 'package:offerswala/screens/Home/image_slider.dart';
+import 'package:offerswala/screens/Home/seasons.dart';
+import 'package:offerswala/screens/Home/ticker.dart';
 import 'package:searchfield/searchfield.dart';
 
 class Screen0 extends StatefulWidget {
@@ -137,26 +143,40 @@ class _Screen0State extends State<Screen0> {
             ),
           ),
           //End of Top container (The one with Backgroud image)
-          //
-          // Categories Scrolling Widget
-          Container(
-            margin: EdgeInsets.symmetric(vertical: 5),
-            child: Catergories_Scrolling_widget(
-                mQWidth: mQWidth, mQHeight: mQHeight),
-          ),
+          //start of Bottom Container
 
-          // Featured Image at Bottom
           Container(
-            margin: EdgeInsets.fromLTRB(10, 6, 10, 6),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.asset(
-                'assets/images/image_slider/3.jpg',
-                fit: BoxFit.cover,
-              ),
+            color: Color(0xffEFEFEF),
+            child: Column(
+              children: [
+                Categories_view(mQWidth: mQWidth, mQHeight: mQHeight),
+                Brands_View(mQWidth: mQWidth, mQHeight: mQHeight),
+                Container(
+                  margin: EdgeInsets.only(left: 10, right: 10),
+                  child: Image.asset('assets/images/Ad1.png'),
+                ),
+                Container(
+                  margin:
+                      EdgeInsets.only(top: 20, bottom: 10, left: 10, right: 10),
+                  child: Image.asset('assets/images/Ad3.png'),
+                ),
+                Container(
+                  margin:
+                      EdgeInsets.only(top: 0, bottom: 10, left: 10, right: 10),
+                  child: bottomImageGrid(mQWidth: mQWidth),
+                ),
+                Container(
+                  margin:
+                      EdgeInsets.only(top: 0, bottom: 10, left: 10, right: 10),
+                  child: B1G1card(mQWidth: mQWidth),
+                ),
+                SeasonsBar(mQWidth: mQWidth),
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 10),
+                  color: Colors.white,
+                  child: Ticker(),
+                ),
+              ],
             ),
           ),
         ],

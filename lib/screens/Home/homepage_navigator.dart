@@ -33,7 +33,7 @@ class _HomeState extends State<Home> {
         },
         backgroundColor: const Color(0xffBA172F),
         selectedIndex: currentIndex,
-        indicatorColor: Color.fromARGB(133, 255, 17, 0),
+        indicatorColor: Color.fromARGB(30, 255, 82, 82),
         destinations: [
           NavigationDestination(
               icon: Icon(

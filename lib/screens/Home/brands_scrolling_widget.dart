@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Categories_view extends StatelessWidget {
-  const Categories_view({
+class Brands_View extends StatelessWidget {
+  const Brands_View({
     super.key,
     required this.mQWidth,
     required this.mQHeight,
@@ -14,7 +14,7 @@ class Categories_view extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 20),
+      margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
       child: Column(
         children: [
           // Categories Scrolling Widget
@@ -29,7 +29,7 @@ class Categories_view extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(left: 15),
                   child: Text(
-                    'Category',
+                    'Top Brands',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
@@ -39,7 +39,7 @@ class Categories_view extends StatelessWidget {
                 SizedBox(
                   height: 5,
                 ),
-                Catergories_Scrolling_widget(
+                Brands_Scrolling_widget(
                   mQWidth: mQWidth,
                   mQHeight: mQHeight,
                 ),
@@ -66,8 +66,8 @@ class Categories_view extends StatelessWidget {
   }
 }
 
-class Catergories_Scrolling_widget extends StatelessWidget {
-  const Catergories_Scrolling_widget({
+class Brands_Scrolling_widget extends StatelessWidget {
+  const Brands_Scrolling_widget({
     super.key,
     required this.mQWidth,
     required this.mQHeight,
@@ -84,50 +84,29 @@ class Catergories_Scrolling_widget extends StatelessWidget {
           SizedBox(
             width: 5,
           ),
-          Category_box(
+          Brand_box(
             mQWidth: mQWidth,
-            text: 'Apparels',
-            src: 'assets/images/icons/categories/Apparel.png',
+            src: 'assets/images/icons/brands/Hanuman.png',
           ),
-          Category_box(
+          Brand_box(
             mQWidth: mQWidth,
-            text: 'Beverages',
-            src: 'assets/images/icons/categories/Beverages.png',
+            src: 'assets/images/icons/brands/Rajhans.png',
           ),
-          Category_box(
+          Brand_box(
             mQWidth: mQWidth,
-            text: 'Education',
-            src: 'assets/images/icons/categories/Education.png',
+            src: 'assets/images/icons/brands/Sai Sales.png',
           ),
-          Category_box(
+          Brand_box(
             mQWidth: mQWidth,
-            text: 'Entertainment',
-            src: 'assets/images/icons/categories/Entertainment.png',
+            src: 'assets/images/icons/brands/Sangli Properties.png',
           ),
-          Category_box(
+          Brand_box(
             mQWidth: mQWidth,
-            text: 'Finance',
-            src: 'assets/images/icons/categories/Finance.png',
+            src: 'assets/images/icons/brands/SFC.png',
           ),
-          Category_box(
+          Brand_box(
             mQWidth: mQWidth,
-            text: 'Furniture',
-            src: 'assets/images/icons/categories/Furniture.png',
-          ),
-          Category_box(
-            mQWidth: mQWidth,
-            text: 'Hotels',
-            src: 'assets/images/icons/categories/Hotels.png',
-          ),
-          Category_box(
-            mQWidth: mQWidth,
-            text: 'Jwellery',
-            src: 'assets/images/icons/categories/Jewellery.png',
-          ),
-          Category_box(
-            mQWidth: mQWidth,
-            text: 'Restaurants',
-            src: 'assets/images/icons/categories/Restaurants.png',
+            src: 'assets/images/icons/brands/Soham Mobile.png',
           ),
         ],
       ),
@@ -135,16 +114,14 @@ class Catergories_Scrolling_widget extends StatelessWidget {
   }
 }
 
-class Category_box extends StatelessWidget {
-  const Category_box({
+class Brand_box extends StatelessWidget {
+  const Brand_box({
     super.key,
     required this.mQWidth,
-    required this.text,
     required this.src,
   });
 
   final double mQWidth;
-  final String text;
   final String src;
 
   @override
@@ -156,7 +133,7 @@ class Category_box extends StatelessWidget {
       elevation: 5,
       child: InkWell(
         onTap: () {
-          Get.snackbar('Tapped on', text + ' Category');
+          Get.snackbar('OffersWala', 'Branded Deals');
         },
         child: SizedBox(
           width: mQWidth / 5,
@@ -166,14 +143,7 @@ class Category_box extends StatelessWidget {
             children: [
               Image.asset(
                 src,
-                width: 40,
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Text(
-                text,
-                style: TextStyle(fontSize: 9),
+                width: 80,
               ),
             ],
           ),

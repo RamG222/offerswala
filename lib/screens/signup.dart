@@ -1,7 +1,7 @@
 // ignore_for_file: unused_import
 
 import 'package:flutter/material.dart';
-import 'package:offerswala/screens/first_location_access.dart';
+import 'package:offerswala/screens/Select_location_Screen.dart';
 import 'package:page_transition/page_transition.dart';
 
 class SignUp extends StatefulWidget {

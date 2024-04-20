@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:offerswala/screens/Home/homepage_navigator.dart';
+import 'package:offerswala/screens/Select_location_Screen.dart';
 import 'package:offerswala/screens/signup.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -140,7 +141,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Home(),
+                              builder: (context) => SelectLocationScreen(),
                             ));
                       },
                       child: Padding(
