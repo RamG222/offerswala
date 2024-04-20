@@ -1,30 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
-import 'package:get/get.dart';
+import 'package:offerswala/screens/Home/categories_scrolling_widget.dart';
 import 'package:offerswala/screens/Home/image_slider.dart';
 import 'package:searchfield/searchfield.dart';
 
-const containerBackgroundColor = Color.fromARGB(255, 242, 166, 24);
-
-class Home extends StatefulWidget {
-  const Home({super.key});
+class Screen0 extends StatefulWidget {
+  const Screen0({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<Screen0> createState() => _Screen0State();
 }
 
-class _HomeState extends State<Home> {
+var suggestion = ['a', 'b', 'c', 'd'];
+
+class _Screen0State extends State<Screen0> {
   @override
   Widget build(BuildContext context) {
     var mQSize = MediaQuery.of(context).size;
     var mQHeight = mQSize.height;
     var mQWidth = mQSize.width;
-
-    var suggestion = ['a', 'b', 'c', 'd'];
-
-    return Scaffold(
-      body: Column(
+    return SingleChildScrollView(
+      child: Column(
         children: [
+          //setting backgroud Image (top)
           Container(
             height: mQHeight / 2,
             width: mQWidth,
@@ -42,6 +39,7 @@ class _HomeState extends State<Home> {
                 SizedBox(
                   height: mQHeight / 20,
                 ),
+                // Row for displaying Logo, Location Text and Location Icon,
                 Row(
                   children: [
                     SizedBox(
@@ -80,6 +78,8 @@ class _HomeState extends State<Home> {
                 SizedBox(
                   height: mQHeight / 150,
                 ),
+
+                // Search Bar Widget
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: mQWidth / 20),
                   decoration: BoxDecoration(
@@ -116,11 +116,47 @@ class _HomeState extends State<Home> {
                     suggestions: [],
                   ),
                 ),
-                SizedBox(
-                  height: mQHeight / 12,
+
+                // Hero Image
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 50),
+                  margin: EdgeInsets.symmetric(vertical: 20),
+                  child: Image.asset(
+                    'assets/images/hero.png',
+                    height: mQHeight / 12,
+                  ),
                 ),
-                ImageSlider(mQWidth: mQWidth, mQHeight: mQHeight),
+
+                // Image Slider
+                Container(
+                  height: mQHeight / 5.2,
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: ImageSlider(mQWidth: mQWidth, mQHeight: mQHeight),
+                ),
               ],
+            ),
+          ),
+          //End of Top container (The one with Backgroud image)
+          //
+          // Categories Scrolling Widget
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 5),
+            child: Catergories_Scrolling_widget(
+                mQWidth: mQWidth, mQHeight: mQHeight),
+          ),
+
+          // Featured Image at Bottom
+          Container(
+            margin: EdgeInsets.fromLTRB(10, 6, 10, 6),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.asset(
+                'assets/images/image_slider/3.jpg',
+                fit: BoxFit.cover,
+              ),
             ),
           ),
         ],

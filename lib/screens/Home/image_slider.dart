@@ -15,64 +15,62 @@ class ImageSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(
-          horizontal: mQWidth / 30, vertical: mQHeight / 150),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(10),
-        child: ImageSlideshow(
-          width: mQWidth,
-          height: mQHeight / 4.1,
-          autoPlayInterval: 5100,
-          isLoop: true,
-          children: [
-            InkWell(
-              child: Image.asset(
-                'assets/images/image_slider/1.jpg',
-                fit: BoxFit.cover,
-              ),
-              onTap: () {
-                Get.snackbar('OffersWala', 'First Image is Pressed');
-              },
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(10),
+      child: ImageSlideshow(
+        height: double.infinity,
+        autoPlayInterval: 5100,
+        isLoop: true,
+        children: [
+          InkWell(
+            child: Image.asset(
+              'assets/images/image_slider/1.jpg',
+              fit: BoxFit.cover,
             ),
-            InkWell(
-              child: Image.asset(
-                'assets/images/image_slider/2.jpg',
-                fit: BoxFit.cover,
-              ),
-              onTap: () {
-                Get.snackbar('OffersWala', 'Second Image is Pressed');
-              },
+            onTap: () {
+              Get.snackbar(
+                'height' + mQHeight.toString(),
+                'width' + mQWidth.toString(),
+              );
+            },
+          ),
+          InkWell(
+            child: Image.asset(
+              'assets/images/image_slider/2.jpg',
+              fit: BoxFit.fill,
             ),
-            InkWell(
-              child: Image.asset(
-                'assets/images/image_slider/3.jpg',
-                fit: BoxFit.cover,
-              ),
-              onTap: () {
-                Get.snackbar('OffersWala', 'Third Image is Pressed');
-              },
+            onTap: () {
+              Get.snackbar('OffersWala', 'Second Image is Pressed');
+            },
+          ),
+          InkWell(
+            child: Image.asset(
+              'assets/images/image_slider/3.jpg',
+              fit: BoxFit.cover,
             ),
-            InkWell(
-              child: Image.asset(
-                'assets/images/image_slider/4.jpg',
-                fit: BoxFit.cover,
-              ),
-              onTap: () {
-                Get.snackbar('OffersWala', 'Fourth Image is Pressed');
-              },
+            onTap: () {
+              Get.snackbar('OffersWala', 'Third Image is Pressed');
+            },
+          ),
+          InkWell(
+            child: Image.asset(
+              'assets/images/image_slider/4.jpg',
+              fit: BoxFit.cover,
             ),
-            InkWell(
-              child: Image.asset(
-                'assets/images/image_slider/5.jpg',
-                fit: BoxFit.cover,
-              ),
-              onTap: () {
-                Get.snackbar('OffersWala', 'Fifth Image is Pressed');
-              },
+            onTap: () {
+              Get.snackbar('OffersWala', 'Fourth Image is Pressed');
+            },
+          ),
+          InkWell(
+            child: Image.asset(
+              'assets/images/image_slider/5.jpg',
+              fit: BoxFit.cover,
             ),
-          ],
-        ),
+            onTap: () {
+              Get.snackbar('OffersWala', 'Fifth Image is Pressed');
+            },
+          ),
+        ],
       ),
     );
   }
