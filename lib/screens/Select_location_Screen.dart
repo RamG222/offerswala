@@ -40,13 +40,13 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
     var mQHeight = mQSize.height;
     var mQWidth = mQSize.width;
     return Scaffold(
-      body: Column(
+      body: ListView(
         children: [
           Container(
             color: Color.fromARGB(30, 255, 82, 82),
             child: Column(
               children: [
-                SizedBox(height: 50),
+                SizedBox(height: 20),
                 Center(
                   child: Text(
                     'Select Location',
@@ -131,44 +131,55 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
                     ),
                   ),
                 ),
+                SizedBox(height: mQHeight / 40),
+                isLoading
+                    ? CircularProgressIndicator(
+                        color: ThemeData().primaryColor,
+                      )
+                    : Text(
+                        selectCity ?? "Choose City to proceed",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                 SizedBox(
                   height: 20,
                 ),
               ],
             ),
           ),
-          SizedBox(height: mQHeight / 40),
-          isLoading
-              ? CircularProgressIndicator(
-                  color: ThemeData().primaryColor,
-                )
-              : Text(
-                  selectCity ?? "Choose City",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
+          SizedBox(height: 20),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: mQWidth / 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Popular Cities',
+                  style: TextStyle(fontSize: 15),
                 ),
-          SizedBox(height: mQHeight / 25),
-
-          // Container(
-          //   margin: EdgeInsets.symmetric(horizontal: mQWidth / 20),
-          //   child: ElevatedButton(
-          //     style: ElevatedButton.styleFrom(
-          //       minimumSize: Size.fromHeight(50),
-          //       backgroundColor: const Color(0xffBA172F),
-          //       shape: RoundedRectangleBorder(
-          //           borderRadius: BorderRadius.circular(9)),
-          //     ),
-          //     onPressed: () {},
-          //     child: const Text(
-          //       'Continue',
-          //       style: TextStyle(
-          //         color: Colors.white,
-          //         fontWeight: FontWeight.bold,
-          //       ),
-          //     ),
-          //   ),
-          // ),
+                SizedBox(height: 10),
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: cities.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text(
+                        cities[index],
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      onTap: () {
+                        setState(() {
+                          selectCity = cities[index];
+                        });
+                      },
+                    );
+                  },
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

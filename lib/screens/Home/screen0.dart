@@ -105,8 +105,8 @@ class _Screen0State extends State<Screen0> {
             ),
           ),
           //End of Top container (The one with Backgroud image)
-          //start of Bottom Container
 
+          //start of Bottom Container
           Container(
             color: Color(0xffEFEFEF),
             child: Column(

@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
 
     return GetMaterialApp(
       theme: myappTheme,
-      home: Home(),
+      home: SelectLocationScreen(),
     );
   }
 }

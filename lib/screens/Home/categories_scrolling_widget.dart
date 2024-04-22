@@ -27,7 +27,7 @@ class Categories_view extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: 10,
+                  height: 2,
                 ),
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: mQWidth / 25),
@@ -38,7 +38,7 @@ class Categories_view extends StatelessWidget {
                         'Category',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 18,
+                          fontSize: 15,
                         ),
                       ),
                       TextButton(
@@ -47,7 +47,7 @@ class Categories_view extends StatelessWidget {
                           'View All >',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 15,
+                            fontSize: 13,
                             color: Colors.black,
                           ),
                         ),
@@ -55,12 +55,12 @@ class Categories_view extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: 2,
-                ),
                 Catergories_Scrolling_widget(
                   mQWidth: mQWidth,
                   mQHeight: mQHeight,
+                ),
+                SizedBox(
+                  height: 5,
                 ),
               ],
             ),
@@ -164,7 +164,7 @@ class Category_box extends StatelessWidget {
           Get.snackbar('Tapped on', text + ' Category');
         },
         child: SizedBox(
-          width: mQWidth / 5,
+          width: mQWidth / 5.5,
           height: mQWidth / 5,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

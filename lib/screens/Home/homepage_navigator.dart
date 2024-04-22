@@ -26,6 +26,7 @@ class _HomeState extends State<Home> {
 
     return Scaffold(
       bottomNavigationBar: NavigationBar(
+        height: 60,
         onDestinationSelected: (value) {
           setState(() {
             currentIndex = value;
