@@ -31,26 +31,25 @@ class _HomeState extends State<Home> {
             currentIndex = value;
           });
         },
-        backgroundColor: const Color(0xffBA172F),
         selectedIndex: currentIndex,
         indicatorColor: Color.fromARGB(30, 255, 82, 82),
         destinations: [
           NavigationDestination(
               icon: Icon(
                 Icons.home,
-                color: Colors.white,
+                color: Color(0xFFBA172F),
               ),
               label: 'Home'),
           NavigationDestination(
               icon: Icon(
                 Icons.category,
-                color: Colors.white,
+                color: Color(0xFFBA172F),
               ),
               label: 'Categories'),
           NavigationDestination(
               icon: Icon(
                 Icons.trending_up,
-                color: Colors.white,
+                color: Color(0xFFBA172F),
               ),
               label: 'Trending'),
           NavigationDestination(
@@ -58,13 +57,13 @@ class _HomeState extends State<Home> {
               icon: isWideScreen(context)
                   ? Icon(
                       Icons.favorite,
-                      color: Colors.white,
+                      color: Color(0xFFBA172F),
                     )
                   : Badge(
-                      backgroundColor: Colors.white,
+                      backgroundColor: Color.fromARGB(255, 238, 255, 55),
                       child: Icon(
                         Icons.favorite,
-                        color: Colors.white,
+                        color: Color(0xFFBA172F),
                       ),
                       label: Text(
                         ' 1 ',
@@ -76,7 +75,7 @@ class _HomeState extends State<Home> {
           NavigationDestination(
             icon: Icon(
               Icons.person,
-              color: Colors.white,
+              color: Color(0xFFBA172F),
             ),
             label: 'Account',
           ),

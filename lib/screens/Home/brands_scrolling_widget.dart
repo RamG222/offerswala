@@ -14,48 +14,53 @@ class Brands_View extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
+      margin: EdgeInsets.fromLTRB(14, 0, 14, 20),
       child: Column(
         children: [
           // Categories Scrolling Widget
           Container(
-            color: Colors.white,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.white,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
                   height: 10,
                 ),
-                Padding(
-                  padding: EdgeInsets.only(left: 15),
-                  child: Text(
-                    'Top Brands',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: mQWidth / 25),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Top Brands',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'View All >',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 SizedBox(
-                  height: 5,
+                  height: 2,
                 ),
                 Brands_Scrolling_widget(
                   mQWidth: mQWidth,
                   mQHeight: mQHeight,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: mQWidth / 1.5),
-                  child: TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      'View All >',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
                 ),
               ],
             ),

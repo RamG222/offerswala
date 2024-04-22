@@ -1,13 +1,12 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:offerswala/screens/Home/b1g1.dart';
 import 'package:offerswala/screens/Home/bottom_image_grid.dart';
 import 'package:offerswala/screens/Home/brands_scrolling_widget.dart';
 import 'package:offerswala/screens/Home/categories_scrolling_widget.dart';
 import 'package:offerswala/screens/Home/image_slider.dart';
+import 'package:offerswala/screens/Home/search_box.dart';
 import 'package:offerswala/screens/Home/seasons.dart';
 import 'package:offerswala/screens/Home/ticker.dart';
-import 'package:searchfield/searchfield.dart';
 
 class Screen0 extends StatefulWidget {
   const Screen0({super.key});
@@ -15,8 +14,6 @@ class Screen0 extends StatefulWidget {
   @override
   State<Screen0> createState() => _Screen0State();
 }
-
-var suggestion = ['a', 'b', 'c', 'd'];
 
 class _Screen0State extends State<Screen0> {
   @override
@@ -86,42 +83,7 @@ class _Screen0State extends State<Screen0> {
                 ),
 
                 // Search Bar Widget
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: mQWidth / 20),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: SearchField(
-                    onSearchTextChanged: (query) {
-                      final filter = suggestion
-                          .where((element) => element
-                              .toString()
-                              .toLowerCase()
-                              .contains(query.toLowerCase()))
-                          .toList();
-                      return filter
-                          .map((e) => SearchFieldListItem<String>(e,
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(vertical: 4),
-                                child: Text(e),
-                              )))
-                          .toList();
-                    },
-                    hint: 'Search',
-                    itemHeight: 50,
-                    searchInputDecoration: InputDecoration(
-                      border: InputBorder.none,
-                      prefixIcon: Icon(Icons.search),
-                      hintStyle: TextStyle(),
-                    ),
-                    suggestionsDecoration: SuggestionDecoration(
-                        padding: const EdgeInsets.all(4),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10),
-                        )),
-                    suggestions: [],
-                  ),
-                ),
+                SearchBox(mQWidth: mQWidth, mQHeight: mQHeight),
 
                 // Hero Image
                 Container(
@@ -152,12 +114,12 @@ class _Screen0State extends State<Screen0> {
                 Categories_view(mQWidth: mQWidth, mQHeight: mQHeight),
                 Brands_View(mQWidth: mQWidth, mQHeight: mQHeight),
                 Container(
-                  margin: EdgeInsets.only(left: 10, right: 10),
+                  margin: EdgeInsets.only(left: 14, right: 14),
                   child: Image.asset('assets/images/Ad1.png'),
                 ),
                 Container(
                   margin:
-                      EdgeInsets.only(top: 20, bottom: 10, left: 10, right: 10),
+                      EdgeInsets.only(top: 20, bottom: 10, left: 14, right: 14),
                   child: Image.asset('assets/images/Ad3.png'),
                 ),
                 Container(
