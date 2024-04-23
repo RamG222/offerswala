@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:offerswala/screens/Home/homepage_navigator.dart';
+import 'package:offerswala/screens/splash_screen.dart';
 import 'package:offerswala/theme.dart';
-import 'package:offerswala/screens/Select_location_Screen.dart';
+
+import 'screens/Home/homepage_navigator.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
 
     return GetMaterialApp(
       theme: myappTheme,
-      home: SelectLocationScreen(),
+      home: Home(),
     );
   }
 }

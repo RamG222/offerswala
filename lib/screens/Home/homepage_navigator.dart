@@ -22,65 +22,78 @@ class _HomeState extends State<Home> {
     var mQHeight = mQSize.height;
     var mQWidth = mQSize.width;
 
-    var bottomAppBar = [];
-
     return Scaffold(
-      bottomNavigationBar: NavigationBar(
-        height: 60,
-        onDestinationSelected: (value) {
-          setState(() {
-            currentIndex = value;
-          });
-        },
-        selectedIndex: currentIndex,
-        indicatorColor: Color.fromARGB(30, 255, 82, 82),
-        destinations: [
-          NavigationDestination(
-              icon: Icon(
-                Icons.home,
-                color: Color(0xFFBA172F),
-              ),
-              label: 'Home'),
-          NavigationDestination(
-              icon: Icon(
-                Icons.category,
-                color: Color(0xFFBA172F),
-              ),
-              label: 'Categories'),
-          NavigationDestination(
-              icon: Icon(
-                Icons.trending_up,
-                color: Color(0xFFBA172F),
-              ),
-              label: 'Trending'),
-          NavigationDestination(
-              //show badge only when something is selected //here temporary some bool used.
-              icon: isWideScreen(context)
-                  ? Icon(
-                      Icons.favorite,
-                      color: Color(0xFFBA172F),
-                    )
-                  : Badge(
-                      backgroundColor: Color.fromARGB(255, 238, 255, 55),
-                      child: Icon(
-                        Icons.favorite,
+      bottomNavigationBar: NavigationBarTheme(
+        data: NavigationBarThemeData(
+          labelTextStyle: MaterialStateProperty.resolveWith<TextStyle>(
+            (Set<MaterialState> states) =>
+                states.contains(MaterialState.selected)
+                    ? TextStyle(
                         color: Color(0xFFBA172F),
-                      ),
-                      label: Text(
-                        ' 1 ',
-                        style: TextStyle(
-                            color: Colors.red, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-              label: 'Favorites'),
-          NavigationDestination(
-            icon: Icon(
-              Icons.person,
-              color: Color(0xFFBA172F),
-            ),
-            label: 'Account',
+                      )
+                    : TextStyle(color: Colors.black),
           ),
-        ],
+        ),
+        child: NavigationBar(
+          height: 60,
+          onDestinationSelected: (value) {
+            setState(() {
+              currentIndex = value;
+            });
+          },
+          selectedIndex: currentIndex,
+          indicatorColor: Color.fromARGB(30, 255, 82, 82),
+          destinations: [
+            NavigationDestination(
+              icon: Icon(
+                Icons.home_outlined,
+                color: currentIndex == 0 ? Color(0xFFBA172F) : null,
+              ),
+              label: 'Home',
+            ),
+            NavigationDestination(
+                icon: Icon(
+                  Icons.grid_view_outlined,
+                  color: currentIndex == 1 ? Color(0xFFBA172F) : null,
+                ),
+                label: 'Categories'),
+            NavigationDestination(
+                icon: Icon(
+                  Icons.whatshot_outlined,
+                  color: currentIndex == 2 ? Color(0xFFBA172F) : null,
+                ),
+                tooltip: 'Sizzling Hot Offers',
+                label: 'Trending'),
+            NavigationDestination(
+                //show badge only when something is selected //here temporary some bool used.
+                icon: isWideScreen(context)
+                    ? Icon(
+                        Icons.favorite,
+                        color: currentIndex == 3 ? Color(0xFFBA172F) : null,
+                      )
+                    : Badge(
+                        backgroundColor: Color.fromARGB(255, 238, 255, 55),
+                        child: Icon(
+                          Icons.favorite,
+                          color: currentIndex == 3 ? Color(0xFFBA172F) : null,
+                        ),
+                        label: Text(
+                          ' 1 ',
+                          style: TextStyle(
+                              color: Color(0xFFBA172F),
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                label: 'Favorites'),
+            NavigationDestination(
+              icon: Icon(
+                Icons.person,
+                color: currentIndex == 4 ? Colors.red : null,
+              ),
+              label: 'Account',
+            ),
+          ],
+        ),
       ),
       body: <Widget>[
         Screen0(),

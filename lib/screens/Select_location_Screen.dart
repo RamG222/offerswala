@@ -3,12 +3,13 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:offerswala/screens/Home/homepage_navigator.dart';
 import 'package:searchfield/searchfield.dart';
 
 List<String> cities = [
   'Pune',
   'Mumbai',
-  'Bengalure',
+  'Bengaluru',
   'Hyderabad',
   'New Delhi',
   'Chennai',
@@ -32,7 +33,10 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
   String? selectCity;
   bool isLoading = false;
 
-  var suggestion = ['a', 'b', 'c', 'd'];
+  bool isSelect = false;
+  var searchController = TextEditingController();
+
+  var suggestion = [...cities];
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +47,8 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
       body: ListView(
         children: [
           Container(
-            color: Color.fromARGB(30, 255, 82, 82),
+            color: Color(0xffEFEFEF),
+            // color: Color.fromARGB(30, 255, 82, 82), // reddish faint color
             child: Column(
               children: [
                 SizedBox(height: 20),
@@ -63,18 +68,28 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10)),
                   child: SearchField(
+                    controller: searchController,
                     onSearchTextChanged: (query) {
                       final filter = suggestion
                           .where((element) => element
                               .toString()
                               .toLowerCase()
-                              .contains(query.toLowerCase()))
+                              .startsWith(query.toLowerCase()))
                           .toList();
+
                       return filter
                           .map((e) => SearchFieldListItem<String>(e,
                               child: Padding(
                                 padding: EdgeInsets.symmetric(vertical: 4),
-                                child: Text(e),
+                                child: TextButton(
+                                  child: Text(e),
+                                  onPressed: () {
+                                    setState(() {
+                                      selectCity = e;
+                                    });
+                                    searchController.clear();
+                                  },
+                                ),
                               )))
                           .toList();
                     },
@@ -86,15 +101,15 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
                       hintStyle: TextStyle(),
                     ),
                     suggestionsDecoration: SuggestionDecoration(
-                        padding: const EdgeInsets.all(4),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10),
-                        )),
+                      padding: const EdgeInsets.all(4),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
+                    ),
                     suggestions: [],
                   ),
                 ),
                 SizedBox(height: 18),
-
                 Text(
                   'OR',
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
@@ -159,25 +174,63 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
                   style: TextStyle(fontSize: 15),
                 ),
                 SizedBox(height: 10),
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: cities.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text(
-                        cities[index],
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      onTap: () {
-                        setState(() {
-                          selectCity = cities[index];
-                        });
-                      },
-                    );
-                  },
+                SizedBox(
+                  height: mQHeight / 2,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    physics: ScrollPhysics(),
+                    itemCount: cities.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text(
+                          cities[index],
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        onTap: () {
+                          setState(() {
+                            selectCity = cities[index];
+                          });
+                        },
+                      );
+                    },
+                  ),
                 ),
               ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: mQWidth / 20),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size.fromHeight(50),
+                backgroundColor: const Color(0xffBA172F),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(9),
+                ),
+              ),
+              onPressed: () {
+                if (selectCity == null) {
+                  Get.snackbar('City not selected', 'Please select a city');
+                } else {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Home(),
+                      ));
+                }
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Continue',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],

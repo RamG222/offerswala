@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:offerswala/screens/Home/b1g1.dart';
-import 'package:offerswala/screens/Home/bottom_image_grid.dart';
-import 'package:offerswala/screens/Home/brands_scrolling_widget.dart';
-import 'package:offerswala/screens/Home/categories_scrolling_widget.dart';
-import 'package:offerswala/screens/Home/image_slider.dart';
-import 'package:offerswala/screens/Home/search_box.dart';
-import 'package:offerswala/screens/Home/seasons.dart';
-import 'package:offerswala/screens/Home/ticker.dart';
+import 'package:offerswala/screens/Home/screen0/b1g1.dart';
+import 'package:offerswala/screens/Home/screen0/bottom_image_grid.dart';
+import 'package:offerswala/screens/Home/screen0/brands_scrolling_widget.dart';
+import 'package:offerswala/screens/Home/screen0/categories_scrolling_widget.dart';
+import 'package:offerswala/screens/Home/screen0/image_slider.dart';
+import 'package:offerswala/screens/Home/screen0/search_box.dart';
+import 'package:offerswala/screens/Home/screen0/seasons.dart';
+import 'package:offerswala/screens/Home/screen0/ticker.dart';
+import 'package:offerswala/screens/Select_location_Screen.dart';
 
 class Screen0 extends StatefulWidget {
   const Screen0({super.key});
@@ -58,18 +59,33 @@ class _Screen0State extends State<Screen0> {
                     ),
                     SizedBox(
                       width: mQWidth / 1.5,
-                      child: Text(
-                        'Pune ',
-                        maxLines: 1,
-                        style: TextStyle(
-                            fontSize: mQHeight / 55,
-                            color: Color.fromARGB(255, 255, 255, 255),
-                            overflow: TextOverflow.ellipsis),
-                        textAlign: TextAlign.start,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SelectLocationScreen(),
+                              ));
+                        },
+                        child: Text(
+                          'Pune ',
+                          maxLines: 1,
+                          style: TextStyle(
+                              fontSize: mQHeight / 55,
+                              color: Color.fromARGB(255, 255, 255, 255),
+                              overflow: TextOverflow.ellipsis),
+                          textAlign: TextAlign.start,
+                        ),
                       ),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SelectLocationScreen(),
+                            ));
+                      },
                       icon: Icon(
                         Icons.location_on,
                         color: Colors.white,

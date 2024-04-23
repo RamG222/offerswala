@@ -13,8 +13,8 @@ dependencies:
   cupertino_icons: ^1.0.6
   page_view_dot_indicator: ^2.3.0
   url_launcher: ^6.2.5
-  geolocator: 
-  geocoding: 
+  geolocator:
+  geocoding:
   geocode: ^1.0.3
   simple_form_validations: ^1.0.1
   flutter_image_slideshow: ^0.1.6
@@ -23,12 +23,15 @@ dependencies:
   get: ^4.6.6
   floating_navigation_bar: ^0.0.5
   carousel_slider: ^4.2.1
+  flutter_rating_bar: ^4.0.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_launcher_icons: "^0.13.1"
+  flutter_lints: ^3.0.2
+
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
@@ -46,6 +49,7 @@ flutter:
     - assets/images/icons/brands/
     - assets/images/grid/
     - assets/images/ticker/
+    - assets/images/offerlist_card/
 
   fonts:
     - family: Gilroy
