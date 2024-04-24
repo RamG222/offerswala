@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:offerswala/screens/CategoryWiseBrandScreen.dart';
 import 'package:offerswala/screens/offers_list_screen.dart';
 
 class Categories_view extends StatelessWidget {
@@ -163,21 +164,27 @@ class Category_box extends StatelessWidget {
       child: InkWell(
         onTap: () {
           Get.snackbar('Tapped on', text + ' Category');
+
           Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => OffersListScreen(
-                imageURL: 'assets/images/offerlist_card/Natraj Annex.png',
-                title: 'Natraj Annex',
-                address:
-                    'Opp. Dileep Tyres pushpraj chowk, South Shivaji Nagar, Sangli Maharashtra 416416',
-                offerID: 1,
-                isVeg: true,
-                ratings: 4.1,
-                noOfVisits: 413,
-              ),
-            ),
-          );
+              context,
+              MaterialPageRoute(
+                builder: (context) => CategoryWiseBrandScreen(Category: text),
+              ));
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(
+          //     builder: (context) => OffersListScreen(
+          //       imageURL: 'assets/images/offerlist_card/Natraj Annex.png',
+          //       title: 'Natraj Annex',
+          //       address:
+          //           'Opp. Dileep Tyres pushpraj chowk, South Shivaji Nagar, Sangli Maharashtra 416416',
+          //       offerID: 1,
+          //       isVeg: true,
+          //       ratings: 4.1,
+          //       noOfVisits: 413,
+          //     ),
+          //   ),
+          // );
         },
         child: SizedBox(
           width: mQWidth / 5.5,

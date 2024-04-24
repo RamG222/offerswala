@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:offerswala/screens/CategoryWiseBrandScreen.dart';
 import 'package:offerswala/screens/splash_screen.dart';
 import 'package:offerswala/theme.dart';
-
 import 'screens/Home/homepage_navigator.dart';
 
 void main() {
@@ -23,7 +23,9 @@ class MyApp extends StatelessWidget {
 
     return GetMaterialApp(
       theme: myappTheme,
-      home: Home(),
+      home: CategoryWiseBrandScreen(
+        Category: 'Restaurant',
+      ),
     );
   }
 }
