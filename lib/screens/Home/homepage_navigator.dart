@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:offerswala/screens/Home/screen0/screen0.dart';
-import 'package:offerswala/screens/Home/screen1.dart';
-import 'package:offerswala/screens/Home/screen2.dart';
-import 'package:offerswala/screens/Home/screen3.dart';
-import 'package:offerswala/screens/Home/screen4.dart';
+import 'package:offerswala/screens/Home/screen1/screen1.dart';
+import 'package:offerswala/screens/Home/screen2/screen2.dart';
+import 'package:offerswala/screens/Home/screen3/screen3.dart';
+import 'package:offerswala/screens/Home/screen4/screen4.dart';
 import 'package:offerswala/widescreen.dart';
 
 import '../../methods/popScope_onback.dart';
