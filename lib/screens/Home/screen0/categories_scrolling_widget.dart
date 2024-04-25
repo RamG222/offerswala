@@ -156,54 +156,57 @@ class Category_box extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      surfaceTintColor: Colors.white,
-      color: Colors.white,
-      margin: EdgeInsets.all(8),
-      elevation: 5,
-      child: InkWell(
-        onTap: () {
-          Get.snackbar('Tapped on', text + ' Category');
+    return Hero(
+      tag: 'Category',
+      child: Card(
+        surfaceTintColor: Colors.white,
+        color: Colors.white,
+        margin: EdgeInsets.all(8),
+        elevation: 5,
+        child: InkWell(
+          onTap: () {
+            Get.snackbar('Tapped on', text + ' Category');
 
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => CategoryWiseBrandScreen(Category: text),
-              ));
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(
-          //     builder: (context) => OffersListScreen(
-          //       imageURL: 'assets/images/offerlist_card/Natraj Annex.png',
-          //       title: 'Natraj Annex',
-          //       address:
-          //           'Opp. Dileep Tyres pushpraj chowk, South Shivaji Nagar, Sangli Maharashtra 416416',
-          //       offerID: 1,
-          //       isVeg: true,
-          //       ratings: 4.1,
-          //       noOfVisits: 413,
-          //     ),
-          //   ),
-          // );
-        },
-        child: SizedBox(
-          width: mQWidth / 5.5,
-          height: mQWidth / 5,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                src,
-                width: 40,
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Text(
-                text,
-                style: TextStyle(fontSize: 9),
-              ),
-            ],
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CategoryWiseBrandScreen(Category: text),
+                ));
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //     builder: (context) => OffersListScreen(
+            //       imageURL: 'assets/images/offerlist_card/Natraj Annex.png',
+            //       title: 'Natraj Annex',
+            //       address:
+            //           'Opp. Dileep Tyres pushpraj chowk, South Shivaji Nagar, Sangli Maharashtra 416416',
+            //       offerID: 1,
+            //       isVeg: true,
+            //       ratings: 4.1,
+            //       noOfVisits: 413,
+            //     ),
+            //   ),
+            // );
+          },
+          child: SizedBox(
+            width: mQWidth / 5.5,
+            height: mQWidth / 5,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  src,
+                  width: 40,
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  text,
+                  style: TextStyle(fontSize: 9),
+                ),
+              ],
+            ),
           ),
         ),
       ),

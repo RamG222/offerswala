@@ -5,6 +5,7 @@ import 'package:offerswala/screens/Select_location_Screen.dart';
 import 'package:offerswala/screens/signup.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../methods/popScope_onback.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -27,29 +28,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
     return PopScope(
       canPop: false,
-      onPopInvoked: (bool value) {
-        showDialog<String>(
-          context: context,
-          builder: (BuildContext context) => AlertDialog(
-            title: const Text("Exit Application?"),
-            actions: <Widget>[
-              TextButton(
-                onPressed: () => Navigator.pop(context, 'NO'),
-                child: const Text('NO'),
-              ),
-              SizedBox(width: 10),
-              TextButton(
-                style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all(Colors.red.shade100)),
-                onPressed: () {
-                  SystemNavigator.pop();
-                },
-                child: Text("Exit"),
-              ),
-            ],
-          ),
-        );
+      onPopInvoked: (didpop) async {
+        if (didpop) {
+          return;
+        }
+        final bool shouldPop = await onback(context);
+        if (shouldPop) {
+          SystemNavigator.pop();
+        }
       },
       child: Scaffold(
         body: SingleChildScrollView(
@@ -138,11 +124,13 @@ class _LoginScreenState extends State<LoginScreen> {
                             borderRadius: BorderRadius.circular(9)),
                       ),
                       onPressed: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SelectLocationScreen(),
-                            ));
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.rightToLeft,
+                            child: SelectLocationScreen(),
+                          ),
+                        );
                       },
                       child: Padding(
                         padding: EdgeInsets.symmetric(
@@ -239,10 +227,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   TextButton(
                     onPressed: () {
                       Navigator.push(
-                          context,
-                          PageTransition(
-                              type: PageTransitionType.rightToLeft,
-                              child: SignUp()));
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.rightToLeft,
+                          child: SignUp(),
+                        ),
+                      );
                     },
                     child: const Text(
                       'Sign Up',

@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -27,10 +27,10 @@ var ratings = [
 ];
 var address = [
   'Opp. Dileep Tyres pushpraj chowk, south Shivaji nagar, Sangli, Maharashtra 416416',
-  'Opp. Dileep Tyres pushpraj chowk, south Shivaji nagar, Sangli, Maharashtra 416416',
-  'Opp. Dileep Tyres pushpraj chowk, south Shivaji nagar, Sangli, Maharashtra 416416',
-  'Opp. Dileep Tyres pushpraj chowk, south Shivaji nagar, Sangli, Maharashtra 416416',
-  'Opp. Dileep Tyres pushpraj chowk, south Shivaji nagar, Sangli, Maharashtra 416416',
+  'Gandhi Nagar,Vishrambag,Sangli,Sangli Miraj Kupwad, Maharashtra 416415',
+  'Bust Stop, Jai bhavan, Nishant Colony,Sangli, Maharashtra 416416',
+  'Shri Complex, 100 feet Rd,Haripriya nagar,Vishrambag, Sangli, Maharashtra 416416',
+  '97/97, Sangli-Miraj Rd, Gandhi Nagar, Vishrambag, Sangli, Maharashtra 416416',
 ];
 var isVeg = [
   true,
@@ -75,12 +75,16 @@ class _CategoryWiseBrandScreenState extends State<CategoryWiseBrandScreen> {
           children: [
             SizedBox(height: mQHeight / 15),
             Center(
-              child: Text(
-                'Top Deals on ${widget.Category}',
-                style: TextStyle(
+              child: Hero(
+                tag: 'Category',
+                child: Text(
+                  'Top Deals on ${widget.Category}',
+                  style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
-                    fontSize: 20),
+                    fontSize: 20,
+                  ),
+                ),
               ),
             ),
             Expanded(
@@ -88,8 +92,10 @@ class _CategoryWiseBrandScreenState extends State<CategoryWiseBrandScreen> {
                 itemCount: brandName.length,
                 itemBuilder: (context, index) {
                   return Card(
-                    color: Color.fromARGB(255, 245, 250, 244),
-                    elevation: 5,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    color: Color.fromARGB(255, 252, 255, 252),
+                    elevation: 2,
                     child: InkWell(
                       onTap: () {
                         Get.snackbar('Tapped on ', '${brandName[index]} card');
@@ -100,32 +106,42 @@ class _CategoryWiseBrandScreenState extends State<CategoryWiseBrandScreen> {
                             width: double.infinity,
                             height: mQHeight / 7,
                             child: Container(
-                              color: Colors.white,
+                              decoration: BoxDecoration(
+                                color: Color.fromARGB(238, 255, 255, 255),
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(10),
+                                  topRight: Radius.circular(10),
+                                ),
+                              ),
                               // First Row Main
                               child: Row(
                                 children: [
                                   //first child image
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Image.asset(
-                                      '${imageURL[index]}',
-                                      width: mQWidth / 3.5,
-                                      height: mQHeight / 8.5,
-                                      fit: BoxFit.fill,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(6),
+                                      child: Image.asset(
+                                        '${imageURL[index]}',
+                                        width: mQWidth / 2.7,
+                                        height: mQHeight / 8.5,
+                                        fit: BoxFit.fill,
+                                      ),
                                     ),
                                   ),
-                                  SizedBox(width: 5),
                                   //second child column
                                   Container(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
                                         //title
                                         SizedBox(
-                                          width: mQWidth / 1.75,
-                                          child: Text(
+                                          width: mQWidth / 1.9,
+                                          child: AutoSizeText(
                                             brandName[index],
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
@@ -154,18 +170,17 @@ class _CategoryWiseBrandScreenState extends State<CategoryWiseBrandScreen> {
                                         ),
                                         //Address
                                         SizedBox(
-                                          width: mQWidth / 1.7,
+                                          width: mQWidth / 1.9,
                                           child: Text(
                                             '${address[index]}',
                                             style: TextStyle(
                                               fontSize: 12,
-                                              overflow: TextOverflow.ellipsis,
                                             ),
                                             softWrap: true,
                                             maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
                                           ),
                                         ),
-                                        SizedBox(height: mQHeight / 230),
                                         //Veg or Non Veg Image
                                         isVeg[index]
                                             ? Image.asset(

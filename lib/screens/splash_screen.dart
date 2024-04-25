@@ -8,16 +8,24 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     //showing splash screen for 3 seconds and then routing to next page
     void delayAndRoute() async {
-      await Future.delayed(const Duration(milliseconds: 3000));
-      await precacheImage(AssetImage("assets/images/01.gif"), context);
-      await precacheImage(AssetImage("assets/images/02.gif"), context);
-      await precacheImage(AssetImage("assets/images/03.gif"), context);
+      // List of futures representing precaching tasks
+      List<Future<void>> precacheFutures = [
+        Future.delayed(const Duration(milliseconds: 3000)),
+        precacheImage(AssetImage("assets/images/01.gif"), context),
+        precacheImage(AssetImage("assets/images/02.gif"), context),
+        precacheImage(AssetImage("assets/images/03.gif"), context),
+      ];
 
+      // Waiting for all precaching tasks to complete using Future.wait
+      await Future.wait(precacheFutures);
+
+      // Navigating to the next screen after all images are precached
       Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const PreLogin1(),
-          ));
+        context,
+        MaterialPageRoute(
+          builder: (context) => const PreLogin1(),
+        ),
+      );
     }
 
     delayAndRoute();

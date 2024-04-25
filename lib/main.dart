@@ -23,9 +23,7 @@ class MyApp extends StatelessWidget {
 
     return GetMaterialApp(
       theme: myappTheme,
-      home: CategoryWiseBrandScreen(
-        Category: 'Restaurant',
-      ),
+      home: SplashScreen(),
     );
   }
 }

@@ -19,9 +19,12 @@ class PreLogin1 extends StatelessWidget {
       onHorizontalDragEnd: (DragEndDetails details) {
         if (details.primaryVelocity! < 0) {
           Navigator.pushReplacement(
-              context,
-              PageTransition(
-                  type: PageTransitionType.rightToLeft, child: PreLogin2()));
+            context,
+            PageTransition(
+              type: PageTransitionType.rightToLeft,
+              child: PreLogin2(),
+            ),
+          );
         }
       },
       child: Scaffold(
