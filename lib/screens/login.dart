@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:offerswala/screens/Home/homepage_navigator.dart';
+import 'package:get/get.dart';
 import 'package:offerswala/screens/Select_location_Screen.dart';
 import 'package:offerswala/screens/signup.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:simple_form_validations/simple_form_validations.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../methods/popScope_onback.dart';
+import 'package:dio/dio.dart';
+
+final dio = Dio();
+
+final loginFormKey = GlobalKey<FormState>();
+TextEditingController phoneNumController = TextEditingController();
+TextEditingController passwordController = TextEditingController();
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -15,16 +23,45 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final loginFormKey = GlobalKey<FormState>();
+  void onLoginPressed() async {
+    if (loginFormKey.currentState!.validate()) {
+      print("Valid data!");
+
+      print(phoneNumController.text);
+      print(passwordController.text);
+
+      try {
+        final response = await dio.post(
+          'http://wbu.1aa.mytemp.website/api/app_login.php',
+          data: {
+            'mobile': phoneNumController.text.trim(),
+            'pass': passwordController.text,
+          },
+        );
+        if (response.statusCode == 200) {
+          Navigator.pushReplacement(
+            context,
+            PageTransition(
+              type: PageTransitionType.rightToLeft,
+              child: SelectLocationScreen(),
+            ),
+          );
+        }
+      } catch (error) {
+        print(error);
+        Get.snackbar(
+          'Login Failed',
+          "$error",
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     var mQSize = MediaQuery.of(context).size;
     var mQHeight = mQSize.height;
     var mQWidth = mQSize.width;
-
-    var phoneNumController = TextEditingController();
-    var passwordController = TextEditingController();
 
     return PopScope(
       canPop: false,
@@ -63,6 +100,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: TextFormField(
                         controller: phoneNumController,
                         keyboardType: TextInputType.number,
+                        // validator: (value) =>
+                        //     SimpleValidations.phoneNumberValidator(value),
                         decoration: InputDecoration(
                           fillColor: Color.fromARGB(255, 255, 255, 255),
                           filled: true,
@@ -123,15 +162,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(9)),
                       ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          PageTransition(
-                            type: PageTransitionType.rightToLeft,
-                            child: SelectLocationScreen(),
-                          ),
-                        );
-                      },
+                      onPressed: onLoginPressed,
                       child: Padding(
                         padding: EdgeInsets.symmetric(
                           horizontal: mQWidth / 3,

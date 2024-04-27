@@ -21,10 +21,11 @@ dependencies:
   searchfield: ^1.0.1
   page_transition: ^2.1.0
   get: ^4.6.6
-  floating_navigation_bar: ^0.0.5
   carousel_slider: ^4.2.1
   flutter_rating_bar: ^4.0.1
   auto_size_text: ^3.0.0
+  shared_preferences: ^2.2.2
+  dio: ^5.4.3+1
 
 dev_dependencies:
   flutter_test:
