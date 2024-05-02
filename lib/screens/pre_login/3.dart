@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:offerswala/screens/login.dart';
 import 'package:offerswala/screens/pre_login/2.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:offerswala/widescreen.dart';
 import 'package:page_view_dot_indicator/page_view_dot_indicator.dart';
 
 class PreLogin3 extends StatelessWidget {
@@ -12,13 +13,6 @@ class PreLogin3 extends StatelessWidget {
     var mQSize = MediaQuery.of(context).size;
     var mQHeight = mQSize.height;
     var mQWidth = mQSize.width;
-    bool isWideScreen() {
-      if (MediaQuery.of(context).size.width > 800) {
-        return true;
-      } else {
-        return false;
-      }
-    }
 
     return GestureDetector(
       onHorizontalDragEnd: (DragEndDetails details) {
@@ -26,16 +20,18 @@ class PreLogin3 extends StatelessWidget {
           Navigator.pushReplacement(
               context,
               PageTransition(
-                  type: PageTransitionType.rightToLeft, child: LoginScreen()));
+                  type: PageTransitionType.rightToLeft,
+                  child: const LoginScreen()));
         } else {
           Navigator.pushReplacement(
               context,
               PageTransition(
-                  type: PageTransitionType.leftToRight, child: PreLogin2()));
+                  type: PageTransitionType.leftToRight,
+                  child: const PreLogin2()));
         }
       },
       child: Scaffold(
-        body: isWideScreen()
+        body: isWideScreen(context)
             ? const Center(
                 child: Text('Tablet or Web'),
               )
@@ -119,7 +115,7 @@ class PreLogin3 extends StatelessWidget {
                                       context,
                                       PageTransition(
                                           type: PageTransitionType.rightToLeft,
-                                          child: LoginScreen()));
+                                          child: const LoginScreen()));
                                 },
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(

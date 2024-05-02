@@ -1,8 +1,13 @@
 // ignore_for_file: unused_import
 
 import 'package:flutter/material.dart';
-import 'package:offerswala/screens/Select_location_Screen.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:offerswala/api/const.dart';
+import 'package:offerswala/screens/select_location_Screen.dart';
+import 'package:offerswala/screens/login.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_form_validations/simple_form_validations.dart';
 
 final signupFormKey = GlobalKey<FormState>();
@@ -11,6 +16,7 @@ var lastNameController = TextEditingController();
 var emailController = TextEditingController();
 var phoneController = TextEditingController();
 var passwordController = TextEditingController();
+var repeatPasswordController = TextEditingController();
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -63,10 +69,10 @@ class _SignUpState extends State<SignUp> {
               ),
               SizedBox(height: mQHeight / 15),
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                      color: const Color.fromARGB(255, 224, 224, 224),
+                      color: Color.fromARGB(255, 224, 224, 224),
                       blurRadius: 10,
                       offset: Offset(0, 3),
                     ),
@@ -78,7 +84,7 @@ class _SignUpState extends State<SignUp> {
                   validator: (value) => SimpleValidations.nameValidator(value),
                   keyboardType: TextInputType.name,
                   decoration: InputDecoration(
-                    fillColor: Color.fromARGB(255, 255, 255, 255),
+                    fillColor: const Color.fromARGB(255, 255, 255, 255),
                     filled: true,
                     enabledBorder: InputBorder.none,
                     focusedBorder: InputBorder.none,
@@ -90,10 +96,10 @@ class _SignUpState extends State<SignUp> {
               ),
               SizedBox(height: mQHeight / 30),
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                      color: const Color.fromARGB(255, 224, 224, 224),
+                      color: Color.fromARGB(255, 224, 224, 224),
                       blurRadius: 10,
                       offset: Offset(0, 3),
                     ),
@@ -105,7 +111,7 @@ class _SignUpState extends State<SignUp> {
                   controller: lastNameController,
                   keyboardType: TextInputType.name,
                   decoration: InputDecoration(
-                    fillColor: Color.fromARGB(255, 255, 255, 255),
+                    fillColor: const Color.fromARGB(255, 255, 255, 255),
                     filled: true,
                     enabledBorder: InputBorder.none,
                     focusedBorder: InputBorder.none,
@@ -117,10 +123,10 @@ class _SignUpState extends State<SignUp> {
               ),
               SizedBox(height: mQHeight / 30),
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                      color: const Color.fromARGB(255, 224, 224, 224),
+                      color: Color.fromARGB(255, 224, 224, 224),
                       blurRadius: 10,
                       offset: Offset(0, 3),
                     ),
@@ -132,7 +138,7 @@ class _SignUpState extends State<SignUp> {
                   controller: emailController,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
-                    fillColor: Color.fromARGB(255, 255, 255, 255),
+                    fillColor: const Color.fromARGB(255, 255, 255, 255),
                     filled: true,
                     enabledBorder: InputBorder.none,
                     focusedBorder: InputBorder.none,
@@ -144,10 +150,10 @@ class _SignUpState extends State<SignUp> {
               ),
               SizedBox(height: mQHeight / 30),
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                      color: const Color.fromARGB(255, 224, 224, 224),
+                      color: Color.fromARGB(255, 224, 224, 224),
                       blurRadius: 10,
                       offset: Offset(0, 3),
                     ),
@@ -160,7 +166,7 @@ class _SignUpState extends State<SignUp> {
                   controller: phoneController,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
-                    fillColor: Color.fromARGB(255, 255, 255, 255),
+                    fillColor: const Color.fromARGB(255, 255, 255, 255),
                     filled: true,
                     enabledBorder: InputBorder.none,
                     focusedBorder: InputBorder.none,
@@ -172,10 +178,10 @@ class _SignUpState extends State<SignUp> {
               ),
               SizedBox(height: mQHeight / 30),
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                      color: const Color.fromARGB(255, 224, 224, 224),
+                      color: Color.fromARGB(255, 224, 224, 224),
                       blurRadius: 10,
                       offset: Offset(0, 3),
                     ),
@@ -188,7 +194,7 @@ class _SignUpState extends State<SignUp> {
                   controller: passwordController,
                   obscureText: true,
                   decoration: InputDecoration(
-                    fillColor: Color.fromARGB(255, 255, 255, 255),
+                    fillColor: const Color.fromARGB(255, 255, 255, 255),
                     filled: true,
                     enabledBorder: InputBorder.none,
                     focusedBorder: InputBorder.none,
@@ -200,10 +206,10 @@ class _SignUpState extends State<SignUp> {
               ),
               SizedBox(height: mQHeight / 30),
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                      color: const Color.fromARGB(255, 224, 224, 224),
+                      color: Color.fromARGB(255, 224, 224, 224),
                       blurRadius: 10,
                       offset: Offset(0, 3),
                     ),
@@ -211,6 +217,7 @@ class _SignUpState extends State<SignUp> {
                 ),
                 margin: EdgeInsets.symmetric(horizontal: mQWidth / 15),
                 child: TextFormField(
+                  controller: repeatPasswordController,
                   validator: (value) {
                     if (value?.isEmpty ?? true) {
                       return "Required";
@@ -219,10 +226,11 @@ class _SignUpState extends State<SignUp> {
                     } else if (value == passwordController.text) {
                       return null;
                     }
+                    return null;
                   },
                   obscureText: true,
                   decoration: InputDecoration(
-                    fillColor: Color.fromARGB(255, 255, 255, 255),
+                    fillColor: const Color.fromARGB(255, 255, 255, 255),
                     filled: true,
                     enabledBorder: InputBorder.none,
                     focusedBorder: InputBorder.none,
@@ -239,12 +247,7 @@ class _SignUpState extends State<SignUp> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(9)),
                 ),
-                onPressed: () {
-                  if (signupFormKey.currentState!.validate()) {
-                    print("Valid data!");
-                    passwordController.clear();
-                  }
-                },
+                onPressed: onSignupPressed,
                 child: Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: mQWidth / 4,
@@ -278,7 +281,7 @@ class _SignUpState extends State<SignUp> {
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 17,
-                        color: const Color(0xffBA172F),
+                        color: Color(0xffBA172F),
                       ),
                     ),
                   ),
@@ -292,5 +295,51 @@ class _SignUpState extends State<SignUp> {
         ),
       ),
     );
+  }
+
+  Future<void> onSignupPressed() async {
+    if (signupFormKey.currentState!.validate()) {
+      print("Valid data!");
+
+      try {
+        final response = await dio.post(
+          signupURL,
+          data: {
+            "FName": firstNameController.text.trim(),
+            "LName": lastNameController.text.trim(),
+            "mobile": phoneController.text.trim(),
+            "email": emailController.text.trim(),
+            "pass": passwordController.text.trim(),
+          },
+        );
+
+        print(response.data);
+
+        if (response.statusCode == 200) {
+          final SharedPreferences prefs = await SharedPreferences.getInstance();
+          await prefs.setString('firstname', response.data['Name']);
+          await prefs.setString('lastname', response.data['last_name']);
+          await prefs.setString('email', response.data['Email']);
+          await prefs.setString('mobile', response.data['Mobile']);
+          await prefs.setString('UID', response.data['UID']);
+          Navigator.pushReplacement(
+            context,
+            PageTransition(
+              type: PageTransitionType.rightToLeft,
+              child: SelectLocationScreen(
+                uid: response.data['UID'],
+              ),
+            ),
+          );
+        } else if (response.statusCode == 208) {
+          Get.snackbar('Failed', 'Mobile Number already Exist',
+              snackPosition: SnackPosition.BOTTOM);
+        } else {
+          Get.snackbar('Login', 'Failed', snackPosition: SnackPosition.BOTTOM);
+        }
+      } catch (error) {
+        print(error);
+      }
+    }
   }
 }

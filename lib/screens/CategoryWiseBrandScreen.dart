@@ -1,7 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
@@ -72,20 +70,17 @@ class _CategoryWiseBrandScreenState extends State<CategoryWiseBrandScreen> {
     var mQHeight = mQSize.height;
     var mQWidth = mQSize.width;
     return Scaffold(
-        backgroundColor: Color(0xffEFEFEF),
+        backgroundColor: const Color(0xffEFEFEF),
         body: Column(
           children: [
             SizedBox(height: mQHeight / 15),
             Center(
-              child: Hero(
-                tag: 'Category',
-                child: Text(
-                  'Top Deals on ${widget.Category}',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
+              child: Text(
+                'Top Deals on ${widget.Category}',
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
                 ),
               ),
             ),
@@ -96,7 +91,7 @@ class _CategoryWiseBrandScreenState extends State<CategoryWiseBrandScreen> {
                   return Card(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
-                    color: Color.fromARGB(255, 252, 255, 252),
+                    color: const Color.fromARGB(255, 252, 255, 252),
                     elevation: 2,
                     child: InkWell(
                       onTap: () {
@@ -106,9 +101,9 @@ class _CategoryWiseBrandScreenState extends State<CategoryWiseBrandScreen> {
                         children: [
                           SizedBox(
                             width: double.infinity,
-                            height: mQHeight / 7,
+                            height: mQHeight / 6.7,
                             child: Container(
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color.fromARGB(238, 255, 255, 255),
                                 borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(10),
@@ -145,7 +140,7 @@ class _CategoryWiseBrandScreenState extends State<CategoryWiseBrandScreen> {
                                           width: mQWidth / 1.9,
                                           child: AutoSizeText(
                                             brandName[index],
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontWeight: FontWeight.bold,
                                               fontSize: 20,
                                             ),
@@ -157,11 +152,11 @@ class _CategoryWiseBrandScreenState extends State<CategoryWiseBrandScreen> {
                                         Row(
                                           children: [
                                             Text('${ratings[index]}'),
-                                            SizedBox(width: 2),
+                                            const SizedBox(width: 2),
                                             RatingBarIndicator(
                                               rating: ratings[index],
                                               itemBuilder: (context, index) =>
-                                                  Icon(
+                                                  const Icon(
                                                 Icons.star,
                                                 color: Colors.amber,
                                               ),
@@ -175,7 +170,7 @@ class _CategoryWiseBrandScreenState extends State<CategoryWiseBrandScreen> {
                                           width: mQWidth / 1.9,
                                           child: Text(
                                             '${address[index]}',
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 12,
                                             ),
                                             softWrap: true,
@@ -202,20 +197,20 @@ class _CategoryWiseBrandScreenState extends State<CategoryWiseBrandScreen> {
                           ),
                           // Second Row Main
                           Container(
-                            margin: EdgeInsets.symmetric(horizontal: 10),
+                            margin: const EdgeInsets.symmetric(horizontal: 10),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
                                   '${noOfVisits[index]} people visited',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                  style: const TextStyle(fontWeight: FontWeight.bold),
                                 ),
                                 TextButton(
                                     onPressed: () {
                                       Get.snackbar(
                                           'Item Name', 'Added to Favorites');
                                     },
-                                    child: Row(
+                                    child: const Row(
                                       children: [
                                         Text(
                                           'Add to Favorites',

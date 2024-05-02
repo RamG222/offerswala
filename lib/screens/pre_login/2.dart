@@ -27,12 +27,12 @@ class PreLogin2 extends StatelessWidget {
           Navigator.pushReplacement(
               context,
               PageTransition(
-                  type: PageTransitionType.rightToLeft, child: PreLogin3()));
+                  type: PageTransitionType.rightToLeft, child: const PreLogin3()));
         } else {
           Navigator.pushReplacement(
               context,
               PageTransition(
-                  type: PageTransitionType.leftToRight, child: PreLogin1()));
+                  type: PageTransitionType.leftToRight, child: const PreLogin1()));
         }
       },
       child: Scaffold(
@@ -120,7 +120,7 @@ class PreLogin2 extends StatelessWidget {
                                       context,
                                       PageTransition(
                                           type: PageTransitionType.rightToLeft,
-                                          child: PreLogin3()));
+                                          child: const PreLogin3()));
                                 },
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(

@@ -14,7 +14,7 @@ class Brands_View extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.fromLTRB(14, 0, 14, 20),
+      margin: const EdgeInsets.fromLTRB(14, 0, 14, 20),
       child: Column(
         children: [
           // Categories Scrolling Widget
@@ -26,7 +26,7 @@ class Brands_View extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 2,
                 ),
                 Container(
@@ -34,7 +34,7 @@ class Brands_View extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
+                      const Text(
                         'Top Brands',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -43,7 +43,7 @@ class Brands_View extends StatelessWidget {
                       ),
                       TextButton(
                         onPressed: () {},
-                        child: Text(
+                        child: const Text(
                           'View All >',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -59,7 +59,7 @@ class Brands_View extends StatelessWidget {
                   mQWidth: mQWidth,
                   mQHeight: mQHeight,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
               ],
@@ -86,7 +86,7 @@ class Brands_Scrolling_widget extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          SizedBox(
+          const SizedBox(
             width: 5,
           ),
           Brand_box(
@@ -134,7 +134,7 @@ class Brand_box extends StatelessWidget {
     return Card(
       surfaceTintColor: Colors.white,
       color: Colors.white,
-      margin: EdgeInsets.all(8),
+      margin: const EdgeInsets.all(8),
       elevation: 5,
       child: InkWell(
         onTap: () {

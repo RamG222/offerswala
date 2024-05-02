@@ -7,7 +7,7 @@ import 'package:offerswala/screens/Home/screen0/image_slider.dart';
 import 'package:offerswala/screens/Home/screen0/search_box.dart';
 import 'package:offerswala/screens/Home/screen0/seasons.dart';
 import 'package:offerswala/screens/Home/screen0/ticker.dart';
-import 'package:offerswala/screens/Select_location_Screen.dart';
+import 'package:offerswala/screens/select_location_Screen.dart';
 
 class Screen0 extends StatefulWidget {
   const Screen0({super.key});
@@ -29,7 +29,7 @@ class _Screen0State extends State<Screen0> {
           Container(
             height: mQHeight / 2,
             width: mQWidth,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.cover,
                 opacity: 0.6,
@@ -64,7 +64,9 @@ class _Screen0State extends State<Screen0> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => SelectLocationScreen(),
+                                builder: (context) => SelectLocationScreen(
+                                  uid: "2",
+                                ),
                               ));
                         },
                         child: Text(
@@ -72,7 +74,7 @@ class _Screen0State extends State<Screen0> {
                           maxLines: 1,
                           style: TextStyle(
                               fontSize: mQHeight / 55,
-                              color: Color.fromARGB(255, 255, 255, 255),
+                              color: const Color.fromARGB(255, 255, 255, 255),
                               overflow: TextOverflow.ellipsis),
                           textAlign: TextAlign.start,
                         ),
@@ -83,10 +85,12 @@ class _Screen0State extends State<Screen0> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SelectLocationScreen(),
+                              builder: (context) => SelectLocationScreen(
+                                uid: "2",
+                              ),
                             ));
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.location_on,
                         color: Colors.white,
                         size: 30,
@@ -103,8 +107,8 @@ class _Screen0State extends State<Screen0> {
 
                 // Hero Image
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 50),
-                  margin: EdgeInsets.symmetric(vertical: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 50),
+                  margin: const EdgeInsets.symmetric(vertical: 20),
                   child: Image.asset(
                     'assets/images/hero.png',
                     height: mQHeight / 12,
@@ -114,7 +118,7 @@ class _Screen0State extends State<Screen0> {
                 // Image Slider
                 Container(
                   height: mQHeight / 5.2,
-                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: ImageSlider(mQWidth: mQWidth, mQHeight: mQHeight),
                 ),
               ],
@@ -124,35 +128,35 @@ class _Screen0State extends State<Screen0> {
 
           //start of Bottom Container
           Container(
-            color: Color(0xffEFEFEF),
+            color: const Color(0xffEFEFEF),
             child: Column(
               children: [
                 Categories_view(mQWidth: mQWidth, mQHeight: mQHeight),
                 Brands_View(mQWidth: mQWidth, mQHeight: mQHeight),
                 Container(
-                  margin: EdgeInsets.only(left: 14, right: 14),
+                  margin: const EdgeInsets.only(left: 14, right: 14),
                   child: Image.asset('assets/images/Ad1.png'),
                 ),
                 Container(
                   margin:
-                      EdgeInsets.only(top: 20, bottom: 10, left: 14, right: 14),
+                      const EdgeInsets.only(top: 20, bottom: 10, left: 14, right: 14),
                   child: Image.asset('assets/images/Ad3.png'),
                 ),
                 Container(
                   margin:
-                      EdgeInsets.only(top: 0, bottom: 10, left: 10, right: 10),
+                      const EdgeInsets.only(top: 0, bottom: 10, left: 10, right: 10),
                   child: bottomImageGrid(mQWidth: mQWidth),
                 ),
                 Container(
                   margin:
-                      EdgeInsets.only(top: 0, bottom: 10, left: 10, right: 10),
+                      const EdgeInsets.only(top: 0, bottom: 10, left: 10, right: 10),
                   child: B1G1card(mQWidth: mQWidth),
                 ),
                 SeasonsBar(mQWidth: mQWidth),
                 Container(
-                  margin: EdgeInsets.symmetric(vertical: 10),
+                  margin: const EdgeInsets.symmetric(vertical: 10),
                   color: Colors.white,
-                  child: Ticker(),
+                  child: const Ticker(),
                 ),
               ],
             ),

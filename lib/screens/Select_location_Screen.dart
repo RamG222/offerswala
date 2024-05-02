@@ -1,45 +1,59 @@
+// ignore_for_file: empty_catches, use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:offerswala/api/const.dart';
 import 'package:offerswala/methods/popScope_onback.dart';
+import 'package:offerswala/models/city.dart';
 import 'package:offerswala/screens/Home/homepage_navigator.dart';
+import 'package:offerswala/screens/login.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:searchfield/searchfield.dart';
 
-List<String> cities = [
-  'Pune',
-  'Mumbai',
-  'Bengaluru',
-  'Hyderabad',
-  'New Delhi',
-  'Chennai',
-  'Kolkata',
-  'Ahmedabad',
-  'Lucknow',
-  'Patna',
-  'Jaipur',
-  'Noida',
-  "Navi Mumbai"
-];
-
 class SelectLocationScreen extends StatefulWidget {
-  const SelectLocationScreen({Key? key}) : super(key: key);
+  const SelectLocationScreen({super.key, required this.uid});
+  final String uid;
 
   @override
   State<SelectLocationScreen> createState() => _SelectLocationScreenState();
 }
 
 class _SelectLocationScreenState extends State<SelectLocationScreen> {
+  late List<City> cities = [];
+
+  String? setCityString = '';
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  void getData() async {
+    try {
+      var response = await dio.get(getCitiesURL);
+      setState(() {
+        cities = (response.data['cities'] as List)
+            .map((cityData) => City(
+                  cityName: cityData['City'],
+                  cityID: cityData['CTID'],
+                ))
+            .toList();
+      });
+    } catch (error) {}
+  }
+
   String? selectCity;
+  String cityID = "";
   bool isLoading = false;
 
   bool isSelect = false;
   var searchController = TextEditingController();
-
-  var suggestion = [...cities];
+  var suggestion = [];
 
   @override
   Widget build(BuildContext context) {
@@ -61,96 +75,91 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
         body: ListView(
           children: [
             Container(
-              color: Color(0xffEFEFEF),
-              // color: Color.fromARGB(30, 255, 82, 82), // reddish faint color
+              color: const Color(0xffEFEFEF),
               child: Column(
                 children: [
-                  SizedBox(height: 20),
-                  Center(
-                    child: Text(
-                      'Select Location',
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
+                  const SizedBox(height: 20),
+                  const Center(
+                      child: Text('Select Location',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold))),
+                  const SizedBox(height: 20),
                   // Search Bar Widget
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal: mQWidth / 20),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: SearchField(
-                      controller: searchController,
-                      onSearchTextChanged: (query) {
-                        final filter = suggestion
-                            .where((element) => element
-                                .toString()
-                                .toLowerCase()
-                                .startsWith(query.toLowerCase()))
-                            .toList();
-
-                        return filter
-                            .map((e) => SearchFieldListItem<String>(e,
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 4),
+                      margin: EdgeInsets.symmetric(horizontal: mQWidth / 20),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: SearchField<City>(
+                        controller: searchController,
+                        hint: 'Type city name',
+                        itemHeight: 50,
+                        searchInputDecoration: const InputDecoration(
+                          border: InputBorder.none,
+                          prefixIcon: Icon(Icons.search),
+                          hintStyle: TextStyle(),
+                        ),
+                        suggestionsDecoration: SuggestionDecoration(
+                            padding: const EdgeInsets.all(4),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10))),
+                        suggestions: cities
+                            .map((city) => SearchFieldListItem<City>(
+                                  city.cityName,
+                                  item: city,
                                   child: TextButton(
-                                    child: Text(e),
-                                    onPressed: () {
-                                      setState(() {
-                                        selectCity = e;
-                                      });
-                                      searchController.clear();
+                                    child: Text(
+                                      city.cityName,
+                                      style:
+                                          const TextStyle(color: Colors.black),
+                                    ),
+                                    onPressed: () async {
+                                      cityID = city.cityID;
+                                      try {
+                                        var res = await dio
+                                            .post(updateCityURL, data: {
+                                          "CTID": cityID,
+                                          "UID": widget.uid,
+                                        });
+                                        Navigator.pushReplacement(
+                                          context,
+                                          PageTransition(
+                                            type:
+                                                PageTransitionType.rightToLeft,
+                                            child: Home(
+                                              cityID: cityID.toString(),
+                                            ),
+                                          ),
+                                        );
+                                      } catch (e) {}
                                     },
                                   ),
-                                )))
-                            .toList();
-                      },
-                      hint: 'Type city name',
-                      itemHeight: 50,
-                      searchInputDecoration: InputDecoration(
-                        border: InputBorder.none,
-                        prefixIcon: Icon(Icons.search),
-                        hintStyle: TextStyle(),
-                      ),
-                      suggestionsDecoration: SuggestionDecoration(
-                        padding: const EdgeInsets.all(4),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10),
-                        ),
-                      ),
-                      suggestions: [],
-                    ),
-                  ),
-                  SizedBox(height: 18),
-                  Text(
-                    'OR',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 18),
+                                ))
+                            .toList(),
+                      )),
+
+                  const SizedBox(height: 18),
+                  const Text('OR',
+                      style:
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 18),
+                  //location button
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: mQWidth / 20),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        minimumSize: Size.fromHeight(50),
+                        minimumSize: const Size.fromHeight(50),
                         backgroundColor: const Color(0xffBA172F),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(9)),
                       ),
                       onPressed: selectLocation,
-                      child: Row(
+                      child: const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
-                            Icons.my_location_rounded,
-                            color: Colors.white,
-                          ),
-                          SizedBox(
-                            width: 7,
-                          ),
-                          const Text(
+                          Icon(Icons.my_location_rounded, color: Colors.white),
+                          SizedBox(width: 7),
+                          Text(
                             'Use my current location',
                             style: TextStyle(
                               color: Colors.white,
@@ -168,42 +177,40 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
                         )
                       : Text(
                           selectCity ?? "Choose City to proceed",
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                  SizedBox(
-                    height: 20,
-                  ),
+                  const SizedBox(height: 20),
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
+            // popular cities container
             Container(
               padding: EdgeInsets.symmetric(horizontal: mQWidth / 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Popular Cities',
-                    style: TextStyle(fontSize: 15),
-                  ),
-                  SizedBox(height: 10),
+                  const Text('Popular Cities', style: TextStyle(fontSize: 15)),
+                  const SizedBox(height: 10),
+                  //List of cities
                   SizedBox(
                     height: mQHeight / 2,
                     child: ListView.builder(
                       shrinkWrap: true,
-                      physics: ScrollPhysics(),
+                      physics: const ScrollPhysics(),
                       itemCount: cities.length,
                       itemBuilder: (context, index) {
                         return ListTile(
                           title: Text(
-                            cities[index],
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            cities[index].cityName,
+                            style: const TextStyle(fontWeight: FontWeight.bold),
                           ),
-                          onTap: () {
+                          onTap: () async {
                             setState(() {
-                              selectCity = cities[index];
+                              selectCity = cities[index].cityName;
+                              cityID = cities[index].cityID;
                             });
                           },
                         );
@@ -213,33 +220,42 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
                 ],
               ),
             ),
+            //confirm button
             Container(
               margin: EdgeInsets.symmetric(horizontal: mQWidth / 20),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  minimumSize: Size.fromHeight(50),
+                  minimumSize: const Size.fromHeight(50),
                   backgroundColor: const Color(0xffBA172F),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(9),
                   ),
                 ),
-                onPressed: () {
+                onPressed: () async {
                   if (selectCity == null) {
                     Get.snackbar('City not selected', 'Please select a city');
                   } else {
+                    try {
+                      var res = await dio.post(updateCityURL, data: {
+                        "CTID": cityID,
+                        "UID": widget.uid,
+                      });
+                    } catch (e) {}
                     Navigator.pushReplacement(
                       context,
                       PageTransition(
                         type: PageTransitionType.rightToLeft,
-                        child: Home(),
+                        child: Home(
+                          cityID: cityID.toString(),
+                        ),
                       ),
                     );
                   }
                 },
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
+                    Text(
                       'Continue',
                       style: TextStyle(
                         color: Colors.white,
@@ -267,7 +283,7 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
     var long = location.longitude;
     try {
       List<Placemark> placemark = await placemarkFromCoordinates(lat, long);
-      String? setSelectCity = await placemark[0].locality;
+      String? setSelectCity = placemark[0].locality;
 
       setState(() {
         selectCity = setSelectCity;

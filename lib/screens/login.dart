@@ -1,9 +1,13 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
-import 'package:offerswala/screens/Select_location_Screen.dart';
+import 'package:offerswala/api/const.dart';
+import 'package:offerswala/screens/Home/homepage_navigator.dart';
+import 'package:offerswala/screens/select_location_Screen.dart';
 import 'package:offerswala/screens/signup.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_form_validations/simple_form_validations.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../methods/popScope_onback.dart';
@@ -23,6 +27,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  bool showInvalidLogin = false;
   void onLoginPressed() async {
     if (loginFormKey.currentState!.validate()) {
       print("Valid data!");
@@ -32,27 +37,57 @@ class _LoginScreenState extends State<LoginScreen> {
 
       try {
         final response = await dio.post(
-          'http://wbu.1aa.mytemp.website/api/app_login.php',
+          loginURL,
           data: {
             'mobile': phoneNumController.text.trim(),
             'pass': passwordController.text,
           },
         );
+
         if (response.statusCode == 200) {
-          Navigator.pushReplacement(
-            context,
-            PageTransition(
-              type: PageTransitionType.rightToLeft,
-              child: SelectLocationScreen(),
-            ),
-          );
+          print(response.data);
+          final SharedPreferences prefs = await SharedPreferences.getInstance();
+          await prefs.setString('firstname', response.data['Name']);
+          await prefs.setString('lastname', response.data['last_name']);
+          await prefs.setString('email', response.data['Email']);
+          await prefs.setString('mobile', response.data['Mobile']);
+          await prefs.setString('UID', response.data['UID']);
+          await prefs.setString('CTID', response.data['CTID']);
+
+          setState(() {
+            showInvalidLogin = false;
+          });
+
+          final String? cityID = prefs.getString('CTID');
+          print(cityID);
+
+          if (cityID == '') {
+            Navigator.pushReplacement(
+              context,
+              PageTransition(
+                type: PageTransitionType.rightToLeft,
+                child: SelectLocationScreen(
+                  uid: response.data['UID'],
+                ),
+              ),
+            );
+          } else {
+            Navigator.pushReplacement(
+              context,
+              PageTransition(
+                type: PageTransitionType.rightToLeft,
+                child: Home(
+                  cityID: response.data['CTID'],
+                ),
+              ),
+            );
+          }
         }
       } catch (error) {
         print(error);
-        Get.snackbar(
-          'Login Failed',
-          "$error",
-        );
+        setState(() {
+          showInvalidLogin = true;
+        });
       }
     }
   }
@@ -87,10 +122,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   children: [
                     Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         boxShadow: [
                           BoxShadow(
-                            color: const Color.fromARGB(255, 224, 224, 224),
+                            color: Color.fromARGB(255, 224, 224, 224),
                             blurRadius: 10,
                             offset: Offset(0, 3),
                           ),
@@ -103,7 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         // validator: (value) =>
                         //     SimpleValidations.phoneNumberValidator(value),
                         decoration: InputDecoration(
-                          fillColor: Color.fromARGB(255, 255, 255, 255),
+                          fillColor: const Color.fromARGB(255, 255, 255, 255),
                           filled: true,
                           enabledBorder: InputBorder.none,
                           focusedBorder: InputBorder.none,
@@ -115,10 +150,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     SizedBox(height: mQHeight / 30),
                     Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         boxShadow: [
                           BoxShadow(
-                            color: const Color.fromARGB(255, 224, 224, 224),
+                            color: Color.fromARGB(255, 224, 224, 224),
                             blurRadius: 10,
                             offset: Offset(0, 3),
                           ),
@@ -155,7 +190,20 @@ class _LoginScreenState extends State<LoginScreen> {
                                 fontWeight: FontWeight.bold),
                           )),
                     ),
-                    SizedBox(height: mQHeight / 42),
+                    SizedBox(
+                      height: mQHeight / 42,
+                      width: mQWidth / 1.15,
+                      child: Visibility(
+                        visible: showInvalidLogin,
+                        child: const Text(
+                          'Invalid Login Credentials',
+                          style: TextStyle(
+                            color: Color(0xffBA172F),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xffBA172F),
@@ -193,15 +241,14 @@ class _LoginScreenState extends State<LoginScreen> {
                             height: mQHeight / 20,
                             child: TextButton.icon(
                               style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStatePropertyAll(Colors.white),
+                                backgroundColor: const MaterialStatePropertyAll(
+                                    Colors.white),
                                 shape: MaterialStateProperty.all<
                                     RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10.0),
-                                    side: BorderSide(
-                                      color: const Color.fromARGB(
-                                          255, 226, 226, 226),
+                                    side: const BorderSide(
+                                      color: Color.fromARGB(255, 226, 226, 226),
                                     ),
                                   ),
                                 ),
@@ -211,7 +258,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 'assets/images/icons/google.png',
                                 width: mQWidth / 15,
                               ),
-                              label: Text('Google'),
+                              label: const Text('Google'),
                             ),
                           ),
                           SizedBox(
@@ -220,14 +267,15 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: TextButton.icon(
                                 style: ButtonStyle(
                                   backgroundColor:
-                                      MaterialStatePropertyAll(Colors.white),
+                                      const MaterialStatePropertyAll(
+                                          Colors.white),
                                   shape: MaterialStateProperty.all<
                                       RoundedRectangleBorder>(
                                     RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10.0),
-                                      side: BorderSide(
-                                        color: const Color.fromARGB(
-                                            255, 226, 226, 226),
+                                      side: const BorderSide(
+                                        color:
+                                            Color.fromARGB(255, 226, 226, 226),
                                       ),
                                     ),
                                   ),
@@ -237,7 +285,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   'assets/images/icons/fb.webp',
                                   width: mQWidth / 17,
                                 ),
-                                label: Text('Facebook')),
+                                label: const Text('Facebook')),
                           ),
                         ],
                       ),
@@ -261,7 +309,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         context,
                         PageTransition(
                           type: PageTransitionType.rightToLeft,
-                          child: SignUp(),
+                          child: const SignUp(),
                         ),
                       );
                     },

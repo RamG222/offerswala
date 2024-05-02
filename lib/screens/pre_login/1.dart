@@ -22,7 +22,7 @@ class PreLogin1 extends StatelessWidget {
             context,
             PageTransition(
               type: PageTransitionType.rightToLeft,
-              child: PreLogin2(),
+              child: const PreLogin2(),
             ),
           );
         }
@@ -106,15 +106,12 @@ class PreLogin1 extends StatelessWidget {
                                   backgroundColor: const Color(0xffFFE059),
                                 ),
                                 onPressed: () {
-                                  // Navigator.of(context).pushReplacement(
-                                  //     MaterialPageRoute(
-                                  //         builder: (context) =>
-                                  //             const PreLogin2()));
+                               
                                   Navigator.pushReplacement(
                                       context,
                                       PageTransition(
                                           type: PageTransitionType.rightToLeft,
-                                          child: PreLogin2()));
+                                          child: const PreLogin2()));
                                 },
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(
