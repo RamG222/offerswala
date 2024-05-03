@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:offerswala/screens/select_location_Screen.dart';
 import 'package:offerswala/screens/splash_screen.dart';
 import 'package:offerswala/theme.dart';
 

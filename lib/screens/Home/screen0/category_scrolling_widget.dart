@@ -1,55 +1,51 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:offerswala/api/const.dart';
-import 'package:offerswala/models/brand.dart';
+import 'package:offerswala/models/category.dart';
 import 'package:offerswala/screens/login.dart';
 
-List<BrandModel> brands = [];
-
+List<CategoryModel> categories = [];
 const imgURL = 'http://192.168.1.5/offerswala/';
 
-class BrandsScrollingWidget extends StatefulWidget {
-  const BrandsScrollingWidget({
+class CategoryScrollingWidget extends StatefulWidget {
+  const CategoryScrollingWidget({
     super.key,
-    required this.cityId,
   });
 
-  final String cityId;
-
   @override
-  State<BrandsScrollingWidget> createState() => _BrandsScrollingWidgetState();
+  State<CategoryScrollingWidget> createState() =>
+      _CategoryScrollingWidgetState();
 }
 
-class _BrandsScrollingWidgetState extends State<BrandsScrollingWidget> {
+class _CategoryScrollingWidgetState extends State<CategoryScrollingWidget> {
   @override
   void initState() {
-    if (brands.isEmpty) {
-      getBrandData();
+    if (categories.isEmpty) {
+      getCategoryData();
     }
     super.initState();
   }
 
-  void getBrandData() async {
+  void getCategoryData() async {
     try {
-      var responseBrand = await dio.get(getBrandsData);
+      var responseCat = await dio.get(getCategoriesData);
 
       setState(() {
-        (responseBrand.data['brands'] as List).forEach((brandData) {
-          List<dynamic> cityIDs = brandData['CTID'];
-          List<String> cityIDsAsString =
-              cityIDs.map((id) => id.toString()).toList();
-
-          brands.add(
-            BrandModel(
-              bID: brandData['BID'],
-              bName: brandData['brandname'],
-              bURL: brandData['brandimg'],
-              cityIDs: cityIDsAsString,
-            ),
-          );
+        (responseCat.data['category'] as List).forEach((categoryData) {
+          categories.add(CategoryModel(
+            categoryID: categoryData['CID'],
+            categoryName: categoryData['Category'],
+            categoryURL: categoryData['Categoryurl'],
+          ));
         });
       });
-    } catch (e) {}
+      categories.forEach((element) {
+        print(element.categoryName);
+      });
+    } catch (e) {
+      // ignore
+      print(e);
+    }
   }
 
   @override
@@ -74,7 +70,7 @@ class _BrandsScrollingWidgetState extends State<BrandsScrollingWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  'Top Brands',
+                  'Top Categories',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
@@ -99,9 +95,9 @@ class _BrandsScrollingWidgetState extends State<BrandsScrollingWidget> {
             height: 100,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: brands.length,
+              itemCount: categories.length,
               itemBuilder: (context, index) {
-                var catData = brands[index];
+                var catData = categories[index];
                 return Card(
                   surfaceTintColor: Colors.white,
                   color: Colors.white,
@@ -118,13 +114,13 @@ class _BrandsScrollingWidgetState extends State<BrandsScrollingWidget> {
                           Padding(
                             padding: const EdgeInsets.all(12.0),
                             child: Image.network(
-                              imgURL + catData.bURL,
+                              imgURL + catData.categoryURL,
                               width: 40,
                               height: 40,
                             ),
                           ),
                           AutoSizeText(
-                            catData.bName,
+                            catData.categoryName,
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 12),
                           ),

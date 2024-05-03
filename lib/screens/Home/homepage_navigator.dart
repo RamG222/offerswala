@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:offerswala/screens/Home/screen0/screen0.dart';
@@ -6,12 +8,18 @@ import 'package:offerswala/screens/Home/screen2/screen2.dart';
 import 'package:offerswala/screens/Home/screen3/screen3.dart';
 import 'package:offerswala/screens/Home/screen4/screen4.dart';
 import 'package:offerswala/widescreen.dart';
-
 import '../../methods/popScope_onback.dart';
 
 class Home extends StatefulWidget {
-  Home({super.key, required this.cityID});
+  Home({
+    super.key,
+    required this.uid,
+    required this.cityID,
+    required this.cityName,
+  });
   String cityID;
+  String uid;
+  String cityName;
   @override
   State<Home> createState() => _HomeState();
 }
@@ -42,10 +50,10 @@ class _HomeState extends State<Home> {
             labelTextStyle: MaterialStateProperty.resolveWith<TextStyle>(
               (Set<MaterialState> states) =>
                   states.contains(MaterialState.selected)
-                      ? TextStyle(
+                      ? const TextStyle(
                           color: Color(0xFFBA172F),
                         )
-                      : TextStyle(color: Colors.black),
+                      : const TextStyle(color: Colors.black),
             ),
           ),
           child: NavigationBar(
@@ -56,25 +64,25 @@ class _HomeState extends State<Home> {
               });
             },
             selectedIndex: currentIndex,
-            indicatorColor: Color.fromARGB(30, 255, 82, 82),
+            indicatorColor: const Color.fromARGB(30, 255, 82, 82),
             destinations: [
               NavigationDestination(
                 icon: Icon(
                   Icons.home_outlined,
-                  color: currentIndex == 0 ? Color(0xFFBA172F) : null,
+                  color: currentIndex == 0 ? const Color(0xFFBA172F) : null,
                 ),
                 label: 'Home',
               ),
               NavigationDestination(
                   icon: Icon(
                     Icons.grid_view_outlined,
-                    color: currentIndex == 1 ? Color(0xFFBA172F) : null,
+                    color: currentIndex == 1 ? const Color(0xFFBA172F) : null,
                   ),
                   label: 'Categories'),
               NavigationDestination(
                   icon: Icon(
                     Icons.whatshot_outlined,
-                    color: currentIndex == 2 ? Color(0xFFBA172F) : null,
+                    color: currentIndex == 2 ? const Color(0xFFBA172F) : null,
                   ),
                   tooltip: 'Sizzling Hot Offers',
                   label: 'Trending'),
@@ -83,19 +91,24 @@ class _HomeState extends State<Home> {
                   icon: isWideScreen(context)
                       ? Icon(
                           Icons.favorite,
-                          color: currentIndex == 3 ? Color(0xFFBA172F) : null,
+                          color: currentIndex == 3
+                              ? const Color(0xFFBA172F)
+                              : null,
                         )
                       : Badge(
-                          backgroundColor: Color.fromARGB(255, 238, 255, 55),
-                          child: Icon(
-                            Icons.favorite,
-                            color: currentIndex == 3 ? Color(0xFFBA172F) : null,
-                          ),
-                          label: Text(
+                          backgroundColor:
+                              const Color.fromARGB(255, 238, 255, 55),
+                          label: const Text(
                             ' 1 ',
                             style: TextStyle(
                                 color: Color(0xFFBA172F),
                                 fontWeight: FontWeight.bold),
+                          ),
+                          child: Icon(
+                            Icons.favorite,
+                            color: currentIndex == 3
+                                ? const Color(0xFFBA172F)
+                                : null,
                           ),
                         ),
                   label: 'Favorites'),
@@ -110,11 +123,15 @@ class _HomeState extends State<Home> {
           ),
         ),
         body: <Widget>[
-          Screen0(),
-          Screen1(),
-          Screen2(),
-          Screen3(),
-          Screen4(),
+          Screen0(
+            uid: widget.uid,
+            cityID: widget.cityID,
+            cityName: widget.cityName,
+          ),
+          const Screen1(),
+          const Screen2(),
+          const Screen3(),
+          const Screen4(),
         ][currentIndex],
       ),
     );

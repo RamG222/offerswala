@@ -53,6 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
           await prefs.setString('mobile', response.data['Mobile']);
           await prefs.setString('UID', response.data['UID']);
           await prefs.setString('CTID', response.data['CTID']);
+          await prefs.setString('CityName', response.data['City']);
 
           setState(() {
             showInvalidLogin = false;
@@ -77,7 +78,9 @@ class _LoginScreenState extends State<LoginScreen> {
               PageTransition(
                 type: PageTransitionType.rightToLeft,
                 child: Home(
+                  cityName: response.data['City'],
                   cityID: response.data['CTID'],
+                  uid: response.data['UID'],
                 ),
               ),
             );

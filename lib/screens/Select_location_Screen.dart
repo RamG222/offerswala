@@ -127,7 +127,9 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
                                             type:
                                                 PageTransitionType.rightToLeft,
                                             child: Home(
+                                              cityName: selectCity ?? '',
                                               cityID: cityID.toString(),
+                                              uid: widget.uid,
                                             ),
                                           ),
                                         );
@@ -246,6 +248,8 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
                       PageTransition(
                         type: PageTransitionType.rightToLeft,
                         child: Home(
+                          cityName: selectCity ?? '',
+                          uid: widget.uid,
                           cityID: cityID.toString(),
                         ),
                       ),
