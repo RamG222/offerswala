@@ -23,10 +23,20 @@ class BrandsScrollingWidget extends StatefulWidget {
 class _BrandsScrollingWidgetState extends State<BrandsScrollingWidget> {
   @override
   void initState() {
+    print('Inside initState Brands');
+
     if (brands.isEmpty) {
       getBrandData();
     }
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    print('Inside Dispose Brands');
+    brands.clear();
+
+    super.dispose();
   }
 
   void getBrandData() async {
@@ -39,14 +49,16 @@ class _BrandsScrollingWidgetState extends State<BrandsScrollingWidget> {
           List<String> cityIDsAsString =
               cityIDs.map((id) => id.toString()).toList();
 
-          brands.add(
-            BrandModel(
-              bID: brandData['BID'],
-              bName: brandData['brandname'],
-              bURL: brandData['brandimg'],
-              cityIDs: cityIDsAsString,
-            ),
-          );
+          if (cityIDsAsString.contains(widget.cityId)) {
+            brands.add(
+              BrandModel(
+                bID: brandData['BID'],
+                bName: brandData['brandname'],
+                bURL: brandData['brandimg'],
+                cityIDs: cityIDsAsString,
+              ),
+            );
+          }
         });
       });
     } catch (e) {}

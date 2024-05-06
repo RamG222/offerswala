@@ -26,6 +26,13 @@ class _CategoryScrollingWidgetState extends State<CategoryScrollingWidget> {
     super.initState();
   }
 
+  @override
+  void dispose() {
+    categories.clear();
+
+    super.dispose();
+  }
+
   void getCategoryData() async {
     try {
       var responseCat = await dio.get(getCategoriesData);
@@ -39,12 +46,8 @@ class _CategoryScrollingWidgetState extends State<CategoryScrollingWidget> {
           ));
         });
       });
-      categories.forEach((element) {
-        print(element.categoryName);
-      });
     } catch (e) {
-      // ignore
-      print(e);
+      //
     }
   }
 

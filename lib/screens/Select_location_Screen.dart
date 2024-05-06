@@ -293,6 +293,14 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
         selectCity = setSelectCity;
         isLoading = false;
       });
+
+      // Find the city ID for the selected city
+      for (var city in cities) {
+        if (city.cityName.contains(selectCity.toString())) {
+          cityID = city.cityID;
+          break;
+        }
+      }
     } catch (e) {
       setState(() {
         isLoading = false;

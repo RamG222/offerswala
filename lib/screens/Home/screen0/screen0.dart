@@ -68,9 +68,10 @@ class _Screen0State extends State<Screen0> {
                       width: mQWidth / 1.5,
                       child: InkWell(
                         onTap: () {
-                          Navigator.push(
+                          Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
+                                maintainState: false,
                                 builder: (context) => SelectLocationScreen(
                                   uid: widget.uid,
                                 ),
@@ -126,7 +127,11 @@ class _Screen0State extends State<Screen0> {
                 Container(
                   height: mQHeight / 5.2,
                   padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: ImageSlider(mQWidth: mQWidth, mQHeight: mQHeight),
+                  child: ImageSlider(
+                    mQWidth: mQWidth,
+                    mQHeight: mQHeight,
+                    cityID: widget.cityID,
+                  ),
                 ),
               ],
             ),
