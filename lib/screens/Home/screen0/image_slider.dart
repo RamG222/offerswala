@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:offerswala/api/const.dart';
 import 'package:offerswala/models/image_slider.dart';
 import 'package:offerswala/screens/login.dart';
 
 List<ImageSliderModel> imageSliderList = [];
-const imgSliderURL = 'http://192.168.1.5/offerswala/';
 
 class ImageSlider extends StatefulWidget {
   const ImageSlider({
@@ -26,10 +24,11 @@ class ImageSlider extends StatefulWidget {
 }
 
 class _ImageSliderState extends State<ImageSlider> {
+  late Future<List<ImageSliderModel>> _futureImageSlider;
   @override
   void initState() {
     print('Inside InitState ImageSlider');
-    getImageSliderData();
+    _futureImageSlider = getImageSliderData();
     super.initState();
   }
 
@@ -40,7 +39,7 @@ class _ImageSliderState extends State<ImageSlider> {
     super.dispose();
   }
 
-  void getImageSliderData() async {
+  Future<List<ImageSliderModel>> getImageSliderData() async {
     try {
       var responseImageSlider = await dio.get(getImageSliderApiData);
       List<dynamic> sliderAds = responseImageSlider.data['slider_ads'];
@@ -66,29 +65,41 @@ class _ImageSliderState extends State<ImageSlider> {
             cityId: ['0'],
             imageURL: 'img/sliderAds/slider 45.jpg'));
       }
-    } catch (e) {}
+      return imageSliderList;
+    } catch (e) {
+      return [];
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(10),
-      child: ImageSlideshow(
-        height: double.infinity,
-        autoPlayInterval: 7100,
-        isLoop: true,
-        children: imageSliderList.map((slider) {
-          return InkWell(
-            child: Image.network(
-              imgSliderURL + slider.imageURL,
-              fit: BoxFit.cover,
+    return FutureBuilder(
+      future: _futureImageSlider,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const CircularProgressIndicator();
+        } else {
+          return ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: ImageSlideshow(
+              height: double.infinity,
+              autoPlayInterval: 7100,
+              isLoop: true,
+              children: imageSliderList.map((slider) {
+                return InkWell(
+                  child: Image.network(
+                    imgURL + slider.imageURL,
+                    fit: BoxFit.cover,
+                  ),
+                  onTap: () {
+                    Get.snackbar("Slider ID ${slider.sliderID}", 'message');
+                  },
+                );
+              }).toList(),
             ),
-            onTap: () {
-              Get.snackbar("Slider ID ${slider.sliderID}", 'message');
-            },
           );
-        }).toList(),
-      ),
+        }
+      },
     );
   }
 }

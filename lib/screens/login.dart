@@ -27,6 +27,13 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  @override
+  void initState() {
+    print('Login URL');
+    print(loginURL);
+    super.initState();
+  }
+
   bool showInvalidLogin = false;
   void onLoginPressed() async {
     if (loginFormKey.currentState!.validate()) {

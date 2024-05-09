@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:offerswala/api/const.dart';
+import 'package:offerswala/models/sub_ads.dart';
+import 'package:offerswala/screens/CategoryWiseBrandScreen.dart';
 import 'package:offerswala/screens/Home/screen0/b1g1.dart';
 import 'package:offerswala/screens/Home/screen0/bottom_image_grid.dart';
 import 'package:offerswala/screens/Home/screen0/brands_scrolling_widget.dart';
@@ -8,6 +11,9 @@ import 'package:offerswala/screens/Home/screen0/search_box.dart';
 import 'package:offerswala/screens/Home/screen0/seasons.dart';
 import 'package:offerswala/screens/Home/screen0/ticker.dart';
 import 'package:offerswala/screens/select_location_Screen.dart';
+import 'package:offerswala/screens/login.dart';
+
+List<SubAdsModel> subAds = [];
 
 class Screen0 extends StatefulWidget {
   const Screen0({
@@ -25,6 +31,27 @@ class Screen0 extends StatefulWidget {
 }
 
 class _Screen0State extends State<Screen0> {
+  late Future<List<SubAdsModel>> _futureSubAds;
+  @override
+  void initState() {
+    _futureSubAds = getSubAdsData();
+
+    super.initState();
+  }
+
+  Future<List<SubAdsModel>> getSubAdsData() async {
+    var responseSubData = await dio.get(getSubAds);
+
+    setState(() {
+      for (var subAd in responseSubData.data['sub_ads']) {
+        subAds.add(SubAdsModel(
+          imageURL: subAd['Sub_ads_img'],
+        ));
+      }
+    });
+    return subAds;
+  }
+
   @override
   Widget build(BuildContext context) {
     var mQSize = MediaQuery.of(context).size;
@@ -144,19 +171,34 @@ class _Screen0State extends State<Screen0> {
             child: Column(
               children: [
                 Container(
-                  margin: const EdgeInsets.only(top: 15),
-                  child: const CategoryScrollingWidget(),
-                ),
+                    margin: const EdgeInsets.only(top: 15),
+                    child: const CategoryScrollingWidget()),
                 BrandsScrollingWidget(cityId: widget.cityID),
-                Container(
-                  margin: const EdgeInsets.only(left: 14, right: 14),
-                  child: Image.asset('assets/images/Ad1.png'),
+
+                //sub ads column
+                FutureBuilder(
+                  future: _futureSubAds,
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Container();
+                    } else {
+                      return Column(
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(left: 14, right: 14),
+                            child: Image.network(imgURL + subAds[0].imageURL),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(
+                                top: 20, bottom: 10, left: 14, right: 14),
+                            child: Image.network(imgURL + subAds[1].imageURL),
+                          ),
+                        ],
+                      );
+                    }
+                  },
                 ),
-                Container(
-                  margin: const EdgeInsets.only(
-                      top: 20, bottom: 10, left: 14, right: 14),
-                  child: Image.asset('assets/images/Ad3.png'),
-                ),
+
                 Container(
                   margin: const EdgeInsets.only(
                       top: 0, bottom: 10, left: 10, right: 10),

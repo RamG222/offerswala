@@ -5,12 +5,9 @@ import 'package:offerswala/models/category.dart';
 import 'package:offerswala/screens/login.dart';
 
 List<CategoryModel> categories = [];
-const imgURL = 'http://192.168.1.5/offerswala/';
 
 class CategoryScrollingWidget extends StatefulWidget {
-  const CategoryScrollingWidget({
-    super.key,
-  });
+  const CategoryScrollingWidget({super.key});
 
   @override
   State<CategoryScrollingWidget> createState() =>
@@ -18,36 +15,28 @@ class CategoryScrollingWidget extends StatefulWidget {
 }
 
 class _CategoryScrollingWidgetState extends State<CategoryScrollingWidget> {
+  late Future<List<CategoryModel>> _categoryFuture;
+
   @override
   void initState() {
-    if (categories.isEmpty) {
-      getCategoryData();
-    }
     super.initState();
+    _categoryFuture = getCategoryData();
   }
 
-  @override
-  void dispose() {
-    categories.clear();
-
-    super.dispose();
-  }
-
-  void getCategoryData() async {
+  Future<List<CategoryModel>> getCategoryData() async {
     try {
       var responseCat = await dio.get(getCategoriesData);
-
-      setState(() {
-        (responseCat.data['category'] as List).forEach((categoryData) {
-          categories.add(CategoryModel(
-            categoryID: categoryData['CID'],
-            categoryName: categoryData['Category'],
-            categoryURL: categoryData['Categoryurl'],
-          ));
-        });
+      List<CategoryModel> categories = [];
+      (responseCat.data['category'] as List).forEach((categoryData) {
+        categories.add(CategoryModel(
+          categoryID: categoryData['CID'],
+          categoryName: categoryData['Category'],
+          categoryURL: categoryData['Categoryurl'],
+        ));
       });
+      return categories;
     } catch (e) {
-      //
+      return []; // handle error accordingly
     }
   }
 
@@ -94,47 +83,61 @@ class _CategoryScrollingWidgetState extends State<CategoryScrollingWidget> {
             ),
           ),
           const SizedBox(height: 5),
-          SizedBox(
-            height: 100,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: categories.length,
-              itemBuilder: (context, index) {
-                var catData = categories[index];
-                return Card(
-                  surfaceTintColor: Colors.white,
-                  color: Colors.white,
-                  margin: const EdgeInsets.all(8),
-                  elevation: 5,
-                  child: InkWell(
-                    onTap: () {},
-                    child: SizedBox(
-                      width: mQWidth / 5.5,
-                      height: mQWidth / 5,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: Image.network(
-                              imgURL + catData.categoryURL,
-                              width: 40,
-                              height: 40,
+          FutureBuilder<List<CategoryModel>>(
+            future: _categoryFuture,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const CircularProgressIndicator(); // show loading indicator while fetching data
+              } else if (snapshot.hasError) {
+                return Text('Error: ${snapshot.error}');
+              } else {
+                List<CategoryModel> categories = snapshot.data ?? [];
+                return SizedBox(
+                  height: 100,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: categories.length,
+                    itemBuilder: (context, index) {
+                      var catData = categories[index];
+                      return Card(
+                        surfaceTintColor: Colors.white,
+                        color: Colors.white,
+                        margin: const EdgeInsets.all(8),
+                        elevation: 5,
+                        child: InkWell(
+                          onTap: () {},
+                          child: SizedBox(
+                            width: mQWidth / 5.5,
+                            height: mQWidth / 5,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(12.0),
+                                  child: Image.network(
+                                    imgURL + catData.categoryURL,
+                                    width: 40,
+                                    height: 40,
+                                  ),
+                                ),
+                                AutoSizeText(
+                                  catData.categoryName,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 11),
+                                ),
+                                const SizedBox(height: 2)
+                              ],
                             ),
                           ),
-                          AutoSizeText(
-                            catData.categoryName,
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 12),
-                          ),
-                          const SizedBox(height: 2)
-                        ],
-                      ),
-                    ),
+                        ),
+                      );
+                    },
                   ),
                 );
-              },
-            ),
+              }
+            },
           ),
           const SizedBox(height: 10)
         ],
