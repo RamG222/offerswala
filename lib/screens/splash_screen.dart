@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:offerswala/screens/Home/homepage_navigator.dart';
 import 'package:offerswala/screens/pre_login/1.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});

@@ -8,7 +8,7 @@ import 'package:offerswala/screens/Home/screen2/screen2.dart';
 import 'package:offerswala/screens/Home/screen3/screen3.dart';
 import 'package:offerswala/screens/Home/screen4/screen4.dart';
 import 'package:offerswala/widescreen.dart';
-import '../../methods/popScope_onback.dart';
+import '../../methods/popscope_onback.dart';
 
 class Home extends StatefulWidget {
   Home({

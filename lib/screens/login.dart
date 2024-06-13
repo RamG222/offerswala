@@ -10,7 +10,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_form_validations/simple_form_validations.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../methods/popScope_onback.dart';
+import '../methods/popscope_onback.dart';
 import 'package:dio/dio.dart';
 
 final dio = Dio();
@@ -328,7 +328,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 17,
-                        color: const Color(0xffBA172F),
+                        color:  Color(0xffBA172F),
                       ),
                     ),
                   ),

@@ -5,7 +5,7 @@ Future<bool> onback(BuildContext context) async {
     context: context,
     builder: ((context) {
       return AlertDialog(
-        backgroundColor: Color.fromARGB(255, 255, 233, 233),
+        backgroundColor: const Color.fromARGB(255, 255, 233, 233),
         title: const Text('Do you Want to Exit App?'),
         actions: [
           TextButton(
@@ -13,14 +13,14 @@ Future<bool> onback(BuildContext context) async {
               Navigator.of(context).pop(false);
             },
             child: const Text('No',
-                style: TextStyle(color: const Color(0xffBA172F))),
+                style: TextStyle(color:  Color(0xffBA172F))),
           ),
           TextButton(
             onPressed: () {
               Navigator.of(context).pop(true);
             },
             child: const Text('Yes',
-                style: TextStyle(color: const Color(0xffBA172F))),
+                style: TextStyle(color:  Color(0xffBA172F))),
           ),
         ],
       );

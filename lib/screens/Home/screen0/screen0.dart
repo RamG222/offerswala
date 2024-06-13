@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:offerswala/api/const.dart';
 import 'package:offerswala/models/sub_ads.dart';
-import 'package:offerswala/screens/CategoryWiseBrandScreen.dart';
 import 'package:offerswala/screens/Home/screen0/b1g1.dart';
 import 'package:offerswala/screens/Home/screen0/bottom_image_grid.dart';
 import 'package:offerswala/screens/Home/screen0/brands_scrolling_widget.dart';

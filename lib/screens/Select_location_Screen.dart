@@ -1,5 +1,3 @@
-// ignore_for_file: empty_catches, use_build_context_synchronously
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:geocoding/geocoding.dart';
@@ -7,7 +5,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:offerswala/api/const.dart';
-import 'package:offerswala/methods/popScope_onback.dart';
+import 'package:offerswala/methods/popscope_onback.dart';
 import 'package:offerswala/models/city.dart';
 import 'package:offerswala/screens/Home/homepage_navigator.dart';
 import 'package:offerswala/screens/login.dart';

@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:offerswala/api/const.dart';
 import 'package:offerswala/models/brand.dart';
@@ -72,7 +71,7 @@ class _BrandsScrollingWidgetState extends State<BrandsScrollingWidget> {
       future: _brandsFuture,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return CircularProgressIndicator();
+          return const CircularProgressIndicator();
         } else {
           return Container(
             margin: const EdgeInsets.fromLTRB(14, 0, 14, 20),
