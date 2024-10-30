@@ -1,16 +1,19 @@
-# offerswala
+# Offerswala app (Released)
 
-A new Flutter project.
+this app is similar to  Groupon, The app provides best deals in selected city for all type of categories.
 
-## Getting Started
+## Screenshots
 
-This project is a starting point for a Flutter application.
+![App Screenshot](a.pvt\Screenshot_1714713614.png)
+![App Screenshot](a.pvt\Screenshot_1714713617.png)
+![App Screenshot](a.pvt\Screenshot_1714732424.png)
+![App Screenshot](a.pvt\Screenshot_1715234407.png)
 
-A few resources to get you started if this is your first Flutter project:
+## Usage/
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+run these commands (api access needed)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```javascript
+ flutter pub get 
+ flutter run 
+```
