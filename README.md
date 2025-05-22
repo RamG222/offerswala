@@ -6,10 +6,12 @@ The project’s main code resides in standard Flutter directories (lib, android,
 
 ## Screenshots
 
-![App Screenshot](https://github.com/RamG222/offerswala/blob/main/a.pvt/Screenshot_1714713614.png)
-![App Screenshot](https://github.com/RamG222/offerswala/blob/main/a.pvt/Screenshot_1714713617.png)
-![App Screenshot](https://github.com/RamG222/offerswala/blob/main/a.pvt/Screenshot_1714732424.png)
-![App Screenshot](https://github.com/RamG222/offerswala/blob/main/a.pvt/Screenshot_1715234407.png)
+| ![](screenshots/1.png) | ![](screenshots/2.png) |
+|----------------------|----------------------|
+| ![](screenshots/3.png) | ![](screenshots/4.png) |
+
+
+
 
 ## Usage/
 
